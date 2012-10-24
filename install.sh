@@ -44,10 +44,10 @@ subversion pkgconfig libmysqlclient-dev libpq-dev
 # install vim and gvim
 sudo apt-get install vim-gnome
 
-# install janus
+# install janus(Vim Distribution)
 curl -Lo- https://bit.ly/janus-bootstrap | bash
-
 mkdir -p ~/.vim/colors
+
 # cp files/themes/vim/Tomorrow-Night.vim ~/.vim/colors/Tomorrow-Night.vim
 curl https://raw.github.com/brunohenrique/myEnv/master/files/themes/vim/Tomorrow-Night.vim >> ~/.vim/colors/Tomorrow-Night.vim
 
