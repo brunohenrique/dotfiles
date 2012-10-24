@@ -48,3 +48,25 @@ sudo apt-get install vim-gnome
 curl -Lo- https://bit.ly/janus-bootstrap | bash
 
 mkdir -p ~/.vim/colors
+# cp files/themes/vim/Tomorrow-Night.vim ~/.vim/colors/Tomorrow-Night.vim
+curl https://raw.github.com/brunohenrique/myEnv/master/files/themes/vim/Tomorrow-Night.vim >> ~/.vim/colors/Tomorrow-Night.vim
+
+
+# cp files/gemrc ~/.gemrc
+curl https://raw.github.com/brunohenrique/myEnv/master/files/gemrc >> ~/.gemrc
+
+
+# cp files/gitconfig ~/.gitconfig
+curl https://raw.github.com/brunohenrique/myEnv/master/files/gitconfig >> ~/.gitconfig
+
+
+# cp files/gitignore ~/.gitignore
+curl https://raw.github.com/brunohenrique/myEnv/master/files/gitignore >> ~/.gitignore
+
+
+# cp files/gvimrc.after ~/.gvimrc.after
+curl https://raw.github.com/brunohenrique/myEnv/master/files/gvimrc.after >> ~/.gvimrc.after
+
+
+# cp files/vimrc.before ~/.gvimrc.before
+curl https://raw.github.com/brunohenrique/myEnv/master/files/vimrc.before >> ~/.vimrc.before
