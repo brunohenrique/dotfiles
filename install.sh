@@ -7,6 +7,11 @@ sudo apt-get install curl wget
 sudo apt-get install git-core
 
 # install nodejs and npm
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+#If you want to compile Node C++ modules:
+sudo apt-get install nodejs-dev
 sudo apt-get install nodejs npm
 
 # install zsh
@@ -28,7 +33,7 @@ source ~/.zshrc #reload
 # install rbenv
 # git clone git://github.com/sstephenson/rbenv.git .rbenv
 # git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-# echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+# echo 'export PATH="$HOME/.rbnv/bin:$PATH"' >> ~/.bash_profile
 # echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 # echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshenv
 # echo 'eval "$(rbenv init -)"' >> ~/.zshenv
@@ -42,7 +47,7 @@ libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison  \
 subversion pkgconfig libmysqlclient-dev libpq-dev
 
 # install vim and gvim
-sudo apt-get install vim-gnome
+sudo apt-get install vim vim-gnome
 
 # install janus(Vim Distribution)
 curl -Lo- https://bit.ly/janus-bootstrap | bash
