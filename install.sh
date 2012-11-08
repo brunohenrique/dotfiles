@@ -40,11 +40,11 @@ source ~/.zshrc #reload
 # echo 'source $HOME/.zshenv' >> ~/.zshrc
 # exec $SHELL
 
-# install dependencias
+# install dependencies
 sudo apt-get install build-essential openssl libreadline6 libreadline6-dev \
 libyaml-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 \
 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison  \
-subversion pkgconfig libmysqlclient-dev libpq-dev
+subversion pkgconfig libmysqlclient-dev libpq-dev bison libxml2-dev libxslt1-dev
 
 # install vim and gvim
 sudo apt-get install vim vim-gnome
