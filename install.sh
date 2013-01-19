@@ -48,7 +48,7 @@ source ~/.zshrc #reload
 # install dependencies
 sudo apt-get -y install build-essential openssl libreadline6 libreadline6-dev \
 libyaml-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libmysqlclient-dev ruby-dev\
-libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison  \
+libxml2-dev autoconf libc6-dev libncurses5-dev automake libtool bison  \
 subversion pkgconfig libmysqlclient-dev libpq-dev bison libxml2-dev libxslt1-dev zlib1g-dev
 
 # install vim and gvim
