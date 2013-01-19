@@ -1,21 +1,21 @@
-sudo apt-get update
+sudo apt-get -y update
 
 # command line tools for transferring data with URL
-sudo apt-get install curl wget
+sudo apt-get -y install curl wget
 
 # install git
-sudo apt-get install git-core
+sudo apt-get -y install git-core
 
 # install nodejs and npm
-sudo apt-get install python-software-properties
+sudo apt-get -y install python-software-properties
 sudo add-apt-repository ppa:chris-lea/node.js
-sudo apt-get update
+sudo apt-get -y update
 #If you want to compile Node C++ modules:
-sudo apt-get install nodejs-dev
-sudo apt-get install nodejs npm
+sudo apt-get -y install nodejs-dev
+sudo apt-get -y install nodejs npm
 
 # install zsh
-sudo apt-get install zsh
+sudo apt-get -y install zsh
 
 # install oh-my-zsh framework
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
@@ -41,13 +41,13 @@ source ~/.zshrc #reload
 # exec $SHELL
 
 # install dependencies
-sudo apt-get install build-essential openssl libreadline6 libreadline6-dev \
+sudo apt-get -y install build-essential openssl libreadline6 libreadline6-dev \
 libyaml-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libmysqlclient-dev ruby-dev\
 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison  \
 subversion pkgconfig libmysqlclient-dev libpq-dev bison libxml2-dev libxslt1-dev zlib1g-dev
 
 # install vim and gvim
-sudo apt-get install vim vim-gnome
+sudo apt-get -y install vim vim-gnome
 
 # install janus(Vim Distribution)
 curl -Lo- https://bit.ly/janus-bootstrap | bash
