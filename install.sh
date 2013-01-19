@@ -25,10 +25,10 @@ curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | 
 chsh -s /bin/zsh
 
 # install rvm
-#curl -L https://get.rvm.io | bash -s stable --ruby
-#source ~/.bash_profile #reload
-#source ~/.bashrc #reload
-#source ~/.zshrc #reload
+curl -L https://get.rvm.io | bash -s stable --ruby
+source ~/.bash_profile #reload
+source ~/.bashrc #reload
+source ~/.zshrc #reload
 
 # install rbenv
 git clone git://github.com/sstephenson/rbenv.git .rbenv
