@@ -25,20 +25,25 @@ curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | 
 chsh -s /bin/zsh
 
 # install rvm
-curl -L https://get.rvm.io | bash -s stable --ruby
+#curl -L https://get.rvm.io | bash -s stable --ruby
+#source ~/.bash_profile #reload
+#source ~/.bashrc #reload
+#source ~/.zshrc #reload
+
+# install rbenv
+git clone git://github.com/sstephenson/rbenv.git .rbenv
+git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbnv/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshenv
+echo 'eval "$(rbenv init -)"' >> ~/.zshenv
+echo 'source $HOME/.zshenv' >> ~/.zshrc
+exec $SHELL
+
 source ~/.bash_profile #reload
 source ~/.bashrc #reload
 source ~/.zshrc #reload
 
-# install rbenv
-# git clone git://github.com/sstephenson/rbenv.git .rbenv
-# git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-# echo 'export PATH="$HOME/.rbnv/bin:$PATH"' >> ~/.bash_profile
-# echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-# echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshenv
-# echo 'eval "$(rbenv init -)"' >> ~/.zshenv
-# echo 'source $HOME/.zshenv' >> ~/.zshrc
-# exec $SHELL
 
 # install dependencies
 sudo apt-get -y install build-essential openssl libreadline6 libreadline6-dev \
