@@ -7,6 +7,10 @@
   name = Bruno Henrique - Garu
   email = squall.bruno@gmail.com
 
+[github]
+  user = my_user
+  passowrd = my_password
+
 [color]
   ui = true
 [color "branch"]
