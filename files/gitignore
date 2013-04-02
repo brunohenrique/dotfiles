@@ -7,3 +7,11 @@ pkg
 tmp
 coverage
 *.log
+*.sw[nop]
+.bundle
+.sass-cache/
+log/*.log
+rerun.txt
+tags
+tmp/**/*
+node_modules/
