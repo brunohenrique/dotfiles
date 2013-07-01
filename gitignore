@@ -15,3 +15,6 @@ rerun.txt
 tags
 tmp/**/*
 node_modules/
+.ruby-gemset
+.ruby-version
+tags
