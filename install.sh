@@ -1,8 +1,7 @@
 git clone git@github.com:brunohenrique/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && git submodule update --init && cd vimfiles && git submodule update --init
 
-mkdir -p ~/.vim/autoload
-mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim/
 
 ln -s ~/.dotfiles/vimfiles/autoload ~/.vim/
 ln -s ~/.dotfiles/vimfiles/colors ~/.vim/
