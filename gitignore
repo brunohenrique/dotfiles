@@ -17,5 +17,6 @@ tmp/**/*
 node_modules/
 .ruby-gemset
 .ruby-version
+.rvmrc
 tags
 bundle/*
