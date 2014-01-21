@@ -10,6 +10,8 @@ ln -s ~/.dotfiles/vimfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/vimfiles/vimrc.bundles ~/.vimrc.bundles
 ln -s ~/.dotfiles/vimfiles/vimrc.after ~/.vimrc.after
 
+git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
 ln -s ~/.dotfiles/.editorconfig ~/
 ln -s ~/.dotfiles/.gemrc ~/
 ln -s ~/.dotfiles/.gitconfig ~/
