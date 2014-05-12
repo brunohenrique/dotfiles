@@ -102,11 +102,6 @@
   lastday = log --author="Bruno Henrique - Garu" --pretty=oneline --all --since=1.day
   lastfriday = log --author="Bruno Henrique - Garu" --pretty=oneline --all --since='last Sex'
 
-  # svn helpers
-  svnr = svn rebase
-  svnd = svn dcommit
-  svnl = svn log --oneline --show-commit
-
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 
