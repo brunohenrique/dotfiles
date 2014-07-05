@@ -24,8 +24,8 @@ vim +BundleInstall +qall
 
 mkdir ~/.fonts
 
-curl https://raw.github.com/Lokaltog/powerline/develop/font/PowerlineSymbols.otf > ~/.fonts/PowerlineSymbols.otf
+curl https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf > ~/.fonts/PowerlineSymbols.otf
 fc-cache -vf ~/.fonts
 
 mkdir -p ~/.config/fontconfig/conf.d/
-curl https://raw.github.com/Lokaltog/powerline/develop/font/10-powerline-symbols.conf > ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+curl https://raw.githubusercontent.com/PiPeep/dotfiles/master/fonts.conf.d/10-powerline-symbols.conf > ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
