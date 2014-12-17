@@ -5,7 +5,6 @@ mkdir -p ~/.vim/
 
 ln -s ~/.dotfiles/vimfiles/autoload ~/.vim/
 ln -s ~/.dotfiles/vimfiles/colors ~/.vim/
-ln -s ~/.dotfiles/vimfiles/bundle ~/.vim/
 ln -s ~/.dotfiles/vimfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/vimfiles/vimrc.bundles ~/.vimrc.bundles
 ln -s ~/.dotfiles/vimfiles/vimrc.after ~/.vimrc.after
