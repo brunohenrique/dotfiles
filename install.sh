@@ -24,7 +24,7 @@ ln -s ~/.dotfiles/vimfiles/colors ~/.vim/
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 
-vim +BundleInstall +qall
+vim +NeoBundleInstall +qall
 
 git clone git@github.com:powerline/fonts.git ~/fonts
 cd ~/fonts && ./install.sh
