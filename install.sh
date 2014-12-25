@@ -21,10 +21,7 @@ ln -s ~/.dotfiles/.pryrc ~/
 
 vim +BundleInstall +qall
 
-mkdir ~/.fonts
+git clone git@github.com:powerline/fonts.git ~/fonts
+cd ~/fonts && ./install.sh
 
-curl https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf > ~/.fonts/PowerlineSymbols.otf
-fc-cache -vf ~/.fonts
-
-mkdir -p ~/.config/fontconfig/conf.d/
-curl https://raw.githubusercontent.com/PiPeep/dotfiles/master/fonts.conf.d/10-powerline-symbols.conf > ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+rm -r ~/fonts
