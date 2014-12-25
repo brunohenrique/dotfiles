@@ -2,6 +2,10 @@ git clone git@github.com:brunohenrique/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && git submodule update --init && cd vimfiles && git submodule update --init
 
 mkdir -p ~/.vim/
+cp -r .scripts/ ~/.scripts
+echo "source ~/.scripts/git-completion.sh" >> ~/.bashrc
+echo "source ~/.scripts/git-prompt.sh" >> ~/.bashrc
+echo "source ~/.scripts/z.sh" >> ~/.bashrc
 
 ln -s ~/.dotfiles/vimfiles/autoload ~/.vim/
 ln -s ~/.dotfiles/vimfiles/colors ~/.vim/
@@ -25,3 +29,4 @@ git clone git@github.com:powerline/fonts.git ~/fonts
 cd ~/fonts && ./install.sh
 
 rm -r ~/fonts
+source ~/.bashrc
