@@ -1,4 +1,4 @@
-My Enviroment
+My environment
 ===================
 
 Install
