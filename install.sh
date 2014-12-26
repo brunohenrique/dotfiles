@@ -1,7 +1,7 @@
 git clone git@github.com:brunohenrique/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles && git submodule update --init && cd vimfiles && git submodule update --init
 
-cp -r .scripts/ ~/.scripts
+cp -r ~/.dotfiles/.scripts/ ~/.scripts
 
 ln -s ~/.dotfiles/.bashrc ~/
 ln -s ~/.dotfiles/.editorconfig ~/
