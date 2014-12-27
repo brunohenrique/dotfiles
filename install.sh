@@ -4,6 +4,7 @@ cd ~/.dotfiles && git submodule update --init && cd vimfiles && git submodule up
 cp -r ~/.dotfiles/.scripts/ ~/.scripts
 
 ln -s ~/.dotfiles/.bashrc ~/
+ln -s ~/.dotfiles/.zshrc ~/
 ln -s ~/.dotfiles/.editorconfig ~/
 ln -s ~/.dotfiles/.gemrc ~/
 ln -s ~/.dotfiles/.gitconfig ~/
