@@ -21,7 +21,6 @@ ln -s ~/.dotfiles/vimfiles/.vimrc ~/
 ln -s ~/.dotfiles/vimfiles/.vimrc.after ~/
 ln -s ~/.dotfiles/vimfiles/.vimrc.bundles ~/
 ln -s ~/.dotfiles/vimfiles/autoload ~/.vim/
-ln -s ~/.dotfiles/vimfiles/colors ~/.vim/
 
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
