@@ -32,3 +32,4 @@ cd ~/fonts && ./install.sh
 rm -r ~/fonts
 
 source ~/.bashrc
+source ~/.zshrc
