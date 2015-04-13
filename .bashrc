@@ -100,4 +100,6 @@ fi
 source ~/.scripts/git-completion.sh
 source ~/.scripts/git-prompt.sh
 source ~/.scripts/z.sh
-source /etc/profile.d/rvm.sh
+
+[[ -s /etc/profile.d/rvm.sh ]] && source /etc/profile.d/rvm.sh
+[[ -s /root/.gvm/scripts/gvm ]] && source /root/.gvm/scripts/gvm
