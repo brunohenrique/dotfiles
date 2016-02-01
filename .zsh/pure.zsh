@@ -16,7 +16,6 @@
 # %m => shortname host
 # %(?..) => prompt conditional - %(condition.true.false)
 
-
 # turns seconds into human readable time
 # 165392 => 1d 21h 56m 32s
 prompt_pure_human_time() {
@@ -121,7 +120,7 @@ prompt_pure_setup() {
 	[[ $UID -eq 0 ]] && prompt_pure_username='%F{white}%n%F{242}@%m '
 
 	# prompt turns red if the previous command didn't exit with 0
-	PROMPT="%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-Σ}%f "
+	PROMPT="%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-∑}%f "
 }
 
 prompt_pure_setup "$@"
