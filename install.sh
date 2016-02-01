@@ -1,28 +1,44 @@
-git clone git@github.com:brunohenrique/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles && git submodule update --init && cd vimfiles && git submodule update --init
+#!/bin/sh
 
-cp -r ~/.dotfiles/.scripts/ ~/.scripts
-cp -r ~/.dotfiles/.zsh/ ~/.zsh
+git clone git@github.com:brunohenrique/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
+git submodule update --init
 
-ln -s ~/.dotfiles/.bashrc ~/
-ln -s ~/.dotfiles/.zshrc ~/
-ln -s ~/.dotfiles/.editorconfig ~/
-ln -s ~/.dotfiles/.gemrc ~/
-ln -s ~/.dotfiles/.gitconfig ~/
-ln -s ~/.dotfiles/.gitignore ~/
-ln -s ~/.dotfiles/.irbrc ~/
-ln -s ~/.dotfiles/.profile ~/
-ln -s ~/.dotfiles/.pryrc ~/
-ln -s ~/.dotfiles/.tmux.conf ~/
+function create_links {
+  directory=$(pwd)
 
+  if [ "${1}" == "vimfiles/" ]; then
+    ln -s ~/.dotfiles/vimfiles/autoload ~/.vim/
+    cd vimfiles/
+    directory=$(pwd)
+  fi
+
+  for file_name in $(ls -d .[a-z]*)
+  do
+    if [ "$file_name" == ".git" ]; then
+      echo "Cannot link $file_name"
+      continue
+    fi
+
+    if [ -s ~/$file_name ]; then
+      echo "File: $file_name already exist in: ~/$file_name"
+    else
+      echo "CREATING A SYMBOLIC LINK TO: $file_name"
+      ln -s $directory/$file_name ~/
+    fi
+  done
+}
+
+create_links
 mkdir -p ~/.vim/
+create_links vimfiles/
 
-ln -s ~/.dotfiles/vimfiles/.vimrc ~/
-ln -s ~/.dotfiles/vimfiles/.vimrc.after ~/
-ln -s ~/.dotfiles/vimfiles/.vimrc.bundles ~/
-ln -s ~/.dotfiles/vimfiles/autoload ~/.vim/
 
-git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+if [ -s ~/.vim/bundle ]; then
+  echo "NeoBundle Already Installed"
+else
+  mkdir -p ~/.vim/bundle
+  git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+fi
 
 
 vim +NeoBundleInstall +qall
@@ -31,5 +47,4 @@ git clone git@github.com:powerline/fonts.git ~/fonts
 cd ~/fonts && ./install.sh
 rm -r ~/fonts
 
-source ~/.bashrc
 source ~/.zshrc
