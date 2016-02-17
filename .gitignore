@@ -1,4 +1,5 @@
 .DS_Store
+autoload/plug.vim
 database.yml
 log/*
 *.sqlite3
