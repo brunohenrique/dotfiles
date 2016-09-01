@@ -1,0 +1,109 @@
+let base16colorspace=256
+set background=dark
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+colorscheme Tomorrow-Night-Eighties
+
+"define font"
+"set guifont=Ubuntu\ Mono:h18
+set guifont=Ubuntu\ Mono\ Bold\ 12
+"set guifont=Monaco\ Bold\ 9.5
+"set guifont=Monaco\ 9.5
+"set guifont=Monospace\ Bold\ 10
+"set guifont=Monospace\ 10
+
+" Highlight current line
+set cursorline
+
+"define the space between lines"
+set linespace=0
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+set laststatus=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ack
+" "
+" " Adds :Ack complete w/ quick fix. I prefer to use :Ack! which does not open
+" " the first thing it finds automatically.
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+map <leader>a :Ack!<space>
+map <leader>A :Ack! <C-R><C-W><CR>
+let g:ackprg="ag --nocolor --nogroup --column"
+
+" Git Gutter
+let g:gitgutter_sign_column_always = 1
+highlight clear SignColumn
+
+" NERDTree mappings
+nnoremap <Leader>p :NERDTreeToggle<CR>
+
+" Ctrl+R reloads the ~/.vimrc file
+nnoremap <F12> :source ~/.vimrc
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" Vim-go
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+" https://github.com/fatih/vim-go/issues/217
+let g:go_fmt_fail_silently = 1
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" Gotags: https://github.com/jstemmer/gotags
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+" Make those debugger statements painfully obvious
+au BufEnter *.rb syn match error contained "\<binding.pry\>"
+au BufEnter *.rb syn match error contained "\<debugger\>"
+
+" Hyperfocus-writing in Vim with Limelight
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7

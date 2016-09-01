@@ -13,4 +13,6 @@ source ~/.zsh/pure.zsh
 [[ -s /root/.gvm/scripts/gvm ]] && source /root/.gvm/scripts/gvm
 
 
+export GOPATH=$HOME/Workspace/side-projects/go
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$GOPATH/bin"

@@ -1,10 +1,18 @@
 My environment
 ===================
 
+## Dependencies
+
+ - [GNU Stow](https://www.gnu.org/software/stow/)
+
 Install
 -------
 
-    Coming soon =)
+```bash
+$ git clone git@github.com:brunohenrique/dotfiles.git
+$ cd dotfiles/
+$ ./install.sh
+```
 
 Terminal bindings
 =================

@@ -20,3 +20,5 @@ node_modules/
 .rvmrc
 tags
 bundle/*
+vim/.vim/plugged/
+vim/.vim/backups/*
