@@ -1,5 +1,6 @@
 .DS_Store
-autoload/plug.vim
+vim/.vim/autoload/plug.vim
+neovim/.config/nvim/autoload/plug.vim
 database.yml
 log/*
 *.sqlite3
