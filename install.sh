@@ -2,6 +2,7 @@
 
 git clone git@github.com:brunohenrique/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
 
+mkdir ~/.config
 for package in $(ls -d */)
 do
   echo "Instaling package: $package"
