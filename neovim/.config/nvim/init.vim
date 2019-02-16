@@ -48,14 +48,16 @@ set lazyredraw
 " Disable mouse click to go to position
 set mouse-=a
 
-
 " ==========  More natural splits ==========
 " Horizontal split below current.
 set splitbelow
 " Vertical split to right of current.
 set splitright
 
-autocmd Filetype gitcommit setlocal spell textwidth=72
+" 50 characters for Git commit's title and 72 characters for commit's body
+autocmd FileType gitcommit set spell textwidth=72
+autocmd FileType gitcommit set colorcolumn=+1
+autocmd FileType gitcommit set colorcolumn+=51
 
 " Ctrl+R reloads the ~/.config/nvim/init.vim file
 nnoremap <F12> :source ~/.config/nvim/init.vim
