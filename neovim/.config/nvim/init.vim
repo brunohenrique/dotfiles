@@ -67,9 +67,6 @@ if filereadable(expand("~/.config/nvim/bundles.vim"))
   source ~/.config/nvim/bundles.vim
 endif
 
-" Show “invisible” characters
-set list lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-
 "Don't wrap lines
 set nowrap
 
