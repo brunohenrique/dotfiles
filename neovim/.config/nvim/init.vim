@@ -62,13 +62,6 @@ autocmd FileType gitcommit set colorcolumn+=51
 " Ctrl+R reloads the ~/.config/nvim/init.vim file
 nnoremap <F12> :source ~/.config/nvim/init.vim
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-
 " ================ Plugins ====================
 if filereadable(expand("~/.config/nvim/bundles.vim"))
   source ~/.config/nvim/bundles.vim
@@ -143,6 +136,7 @@ set background=dark
 " Highlight current line
 set cursorline
 
+" Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
