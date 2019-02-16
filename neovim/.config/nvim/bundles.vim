@@ -1,5 +1,5 @@
 call plug#begin('~/.nvim/plugged')
-Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim/' }
+Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline-themes'
 

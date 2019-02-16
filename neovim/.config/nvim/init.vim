@@ -118,17 +118,14 @@ set wildignore+=vendor/assets/**
 set wildignore+=vendor/cache/**
 set wildignore+=vendor/rails/**
 "stuff to ignore when tab completing
-set wildignore=*.o,*.obj,*~ 
+set wildignore=*.o,*.obj,*~
 "enable ctrl-n and ctrl-p to scroll thru matches
 set wildmenu
 set wildmode=list:longest
 
-
 " ================ Visual ==================
-colorscheme Tomorrow-Night-Eighties
-colorscheme base16-ocean
-let base16colorspace=256
 set background=dark
+colorscheme nord
 
 " Highlight current line
 set cursorline
