@@ -4,6 +4,8 @@ My environment
 ## Dependencies
 
  - [GNU Stow](https://www.gnu.org/software/stow/)
+ - [Git](https://git-scm.com/)
+ - [Zplug](https://github.com/zplug/zplug)
 
 Install
 -------
