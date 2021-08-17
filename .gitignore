@@ -1,0 +1,5 @@
+vim/.vim/plugged/
+vim/.vim/backups/*
+vim/.vim/autoload/plug.vim
+neovim/.config/nvim/autoload/
+neovim/.config/nvim/plugin/
