@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Creates a companion popup session based on your current session.
+
+set -eou pipefail
+
+session_name="$(tmux display-message -p -F "#{session_name}")"
+popup_name="${session_name}-popup"
+
+if [[ $session_name == *popup* ]]; then
+    tmux detach-client
+else
+    tmux display-popup -E "tmux attach -t ${popup_name} || tmux new -s ${popup_name}"
+fi
