@@ -1,0 +1,79 @@
+[user]
+  name    = Bruno Henrique - Garu
+  email   = squall.bruno@gmail.com
+	gpgsign = true
+
+[core]
+  autocrlf     = false
+  editor       = nvim -f
+	excludesfile = ~/.config/git/.gitignore
+
+[github]
+  user = brunohenrique
+
+[push]
+  # 'git push' will push the current branch to its tracking branch
+  # the usual default is to push all branches
+  default = tracking
+
+[merge]
+  summary   = true
+  verbosity = 1
+
+[branch]
+  autosetupmerge = true
+
+[apply]
+  whitespace = fix
+
+[diff]
+  # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+  # instead of a/b/c/d as prefixes for patches
+  mnemonicprefix = true
+
+[rerere]
+  # Remember my merges
+  # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
+  enabled = true
+
+[gpg]
+	program = gpg
+
+[pull]
+	rebase = false
+
+[commit]
+	verbose  = true
+	gpgsign  = true
+	template = ~/.config/git/.gitmessage
+
+[color]
+  ui = true
+
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green
+
+[color "status"]
+	added     = green
+	changed   = yellow
+	untracked = cyan
+
+[format]
+  pretty = format:%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %C(reset)[%C(blue)%an%C(reset)]%C(bold yellow)%d%C(reset)
+
+[alias]
+  l    = log --graph --abbrev-commit --date=relative
+  ll   = log --graph --abbrev-commit --date=relative --name-status
+  lp   = log --graph --abbrev-commit --date=relative -p
+  logt = log --graph --abbrev-commit --decorate --date=relative --all
+
+[include]
+  path = local.inc
