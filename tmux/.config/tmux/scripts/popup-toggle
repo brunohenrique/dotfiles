@@ -10,5 +10,5 @@ popup_name="${session_name}-popup"
 if [[ $session_name == *popup* ]]; then
     tmux detach-client
 else
-    tmux display-popup -E "tmux attach -t ${popup_name} || tmux new -s ${popup_name}"
+    tmux display-popup -E "tmux new-session -A -s ${popup_name} -c '#{pane_current_path}'"
 fi
