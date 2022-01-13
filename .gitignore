@@ -3,3 +3,7 @@ vim/.vim/backups/*
 vim/.vim/autoload/plug.vim
 neovim/.config/nvim/autoload/
 neovim/.config/nvim/plugin/
+fish/.config/fish/completions/
+fish/.config/fish/conf.d/
+fish/.config/fish/functions/
+fish/.config/fish/fish_variables
