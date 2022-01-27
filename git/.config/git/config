@@ -1,10 +1,11 @@
 [user]
-  name    = Bruno Henrique - Garu
-  email   = squall.bruno@gmail.com
-	gpgsign = true
+  name       = Bruno Henrique - Garu
+  email      = squall.bruno@gmail.com
+	gpgsign    = true
+	signingkey = squall.bruno@gmail.com
 
 [core]
-  autocrlf     = false
+	autocrlf     = input
   editor       = nvim -f
 	excludesfile = ~/.config/git/.gitignore
 
@@ -46,6 +47,9 @@
 	verbose  = true
 	gpgsign  = true
 	template = ~/.config/git/.gitmessage
+
+[tag]
+	gpgsign  = true
 
 [color]
   ui = true
