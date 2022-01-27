@@ -2,7 +2,7 @@
 #
 # Fuzzy find a project folder, creates a new Tmux session, and attaches to it.
 
-set -eou pipefail
+set -ou pipefail
 
 export FZF_DEFAULT_OPTS='
      --height 100%
@@ -15,10 +15,11 @@ export FZF_DEFAULT_OPTS='
 PROJECTS_DIRS="$(cat ~/.config/tmux/projects_dirs)"
 
 project_folder=$(fd . --type d $PROJECTS_DIRS --max-depth 1 | fzf)
-session_name="$(echo "$project_folder" | awk -F "/" '{print $NF}')"
+session_name=$(echo "$project_folder" | awk -F "/" '{print $NF}')
 
-tmux has-session -t "$session_name" 2> /dev/null
+tmux has-session -t "$session_name" 2>/dev/null
 if [ $? != 0 ]; then
   tmux new-session -d -s "$session_name" -c "$project_folder"
 fi
+
 tmux switch-client -t "$session_name"
