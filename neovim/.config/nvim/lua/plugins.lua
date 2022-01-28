@@ -3,10 +3,9 @@ function nmap(...) vim.api.nvim_set_keymap('n', ...) end
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+  fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
   execute 'packadd packer.nvim'
 end
 
@@ -44,98 +43,10 @@ end
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use 'editorconfig/editorconfig-vim'
-  use 'rhysd/git-messenger.vim'
-  use 'pechorin/any-jump.vim'
-  -- use 'scrooloose/nerdcommenter'
 
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup{}
-    end
-  }
-
-  use {
-    'shaunsingh/nord.nvim',
-    config = function()
-      local util = require('nord.util')
-      local colors = require('nord.colors')
-      util.highlight('TelescopePromptBorder', { fg = colors.nord9_gui })
-      util.highlight('TelescopeResultsBorder', { fg = colors.nord9_gui })
-      util.highlight('TelescopePreviewBorder', { fg = colors.nord9_gui })
-    end
-  }
-
-  use {
-    'liuchengxu/vista.vim',
-    config = function()
-      vim.g.vista_ctags_executable = 'ctags'
-      vim.g.vista_default_executive = 'nvim_lsp'
-      vim.g['vista#executives'] = {'nvim_lsp', 'ctags'}
-
-      nmap('<Leader>v', ':Vista!!<CR>', { noremap = true })
-    end
-  }
-
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('gitsigns').setup{
-        current_line_blame = true,
-        current_line_blame_opts = {
-          virt_text = true,
-          virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-          delay = 1000,
-        },
-        current_line_blame_formatter_opts = {
-          relative_time = false
-        },
-      }
-    end
-  }
-
-  use {
-    'lervag/vimtex',
-    ft = { 'tex' },
-    config = function()
-      vim.g.tex_flavor = 'latex'
-    end
-  }
-
-  use {
-    'dyng/ctrlsf.vim',
-    config = function()
-      nmap('<C-s>f', ':CtrlSF<SPACE>', { noremap = true })
-    end
-  }
-
-  use {
-    'fatih/vim-go',
-    ft = { 'go' },
-    config = function()
-      vim.g.go_gopls_enabled = false
-      vim.g.go_fmt_fail_silently = true
-      -- These options are disabled to favor the nvim-lspconfig setup:
-      -- GoToDefinition -> lua vim.lsp.buf.definition()
-      vim.g.go_def_mapping_enabled = false
-      -- GoDoc -> lua vim.lsp.buf.hover()
-      vim.g.go_doc_keywordprg_enabled = false
-    end
-  }
-
-  use {
-    'pwntester/octo.nvim',
-    config = function()
-      require'octo'.setup {}
-    end
-  }
-
-  use {
-    'mattn/gist-vim',
-    requires = { 'mattn/webapi-vim' }
-  }
+  -- ###############################################################################
+  -- ###                              STYLING                                    ###
+  -- ###############################################################################
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -144,47 +55,76 @@ return require('packer').startup(function()
       require('lualine').setup {
         options = { theme = 'nord' },
         sections = {
-          lualine_a = {'mode'},
+          lualine_a = { 'mode' },
           lualine_c = {
             {
               'filename',
-              path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-            }
+              path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+            },
           },
         },
         tabline = {
-          lualine_a = {'buffers'},
+          lualine_a = { 'buffers' },
           lualine_b = {},
           lualine_c = {},
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {'tabs'}
+          lualine_z = { 'tabs' },
         },
       }
-    end
+    end,
   }
 
   use {
-    'folke/which-key.nvim',
+    'andersevenrud/nordic.nvim',
     config = function()
-      require('which-key').setup {}
-    end
+      -- The table used in this example contains the default settings.
+      -- Modify or remove these to your liking (this also applies to alternatives below):
+      require('nordic').colorscheme({
+        -- Underline style used for spelling
+        -- Options: 'none', 'underline', 'undercurl'
+        underline_option = 'underline',
+
+        -- Italics for certain keywords such as constructors, functions,
+        -- labels and namespaces
+        italic = true,
+
+        -- Italic styled comments
+        italic_comments = true,
+
+        -- Minimal mode: different choice of colors for Tabs and StatusLine
+        minimal_mode = true,
+
+        -- Darker backgrounds for certain sidebars, popups, etc.
+        -- Options: true, false, or a table of explicit names
+        -- Supported: terminal, qf, vista_kind, packer, nvim-tree, telescope, whichkey
+        alternate_backgrounds = false,
+
+        -- Callback function to define custom color groups
+        -- See 'lua/nordic/colors/example.lua' for example defitions
+        custom_colors = function(c, s, cs)
+          return {
+            { 'TelescopePromptBorder', c.blue },
+            { 'TelescopeResultsBorder', c.blue },
+            { 'TelescopePreviewBorder', c.blue },
+          }
+        end,
+      })
+    end,
   }
 
-  use {
-    'folke/todo-comments.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('todo-comments').setup {}
-    end
-  }
+  -- ###############################################################################
+  -- ###                              LANGUAGES                                  ###
+  -- ###############################################################################
+
+  use { 'lervag/vimtex', ft = { 'tex' }, config = function() vim.g.tex_flavor = 'latex' end }
 
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = 'maintained',   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        ensure_installed = 'maintained', -- one of "all", "maintained" (parsers with maintainers), or a list of languages
         ignore_install = { 'javascript' }, -- List of parsers to ignore installing
         highlight = {
           enable = true, -- false will disable the whole extension
@@ -195,32 +135,82 @@ return require('packer').startup(function()
           additional_vim_regex_highlighting = false,
         },
       }
-    end
+    end,
+  }
+
+  use {
+    'fatih/vim-go',
+    ft = { 'go' },
+    config = function()
+      -- These options are disabled to favor the nvim-lspconfig setup:
+      -- GoToDefinition -> lua vim.lsp.buf.definition()
+      vim.g.go_def_mapping_enabled = false
+      -- GoDoc -> lua vim.lsp.buf.hover()
+      vim.g.go_doc_keywordprg_enabled = false
+      vim.g.go_gopls_enabled = false
+      vim.g.go_fmt_fail_silently = true
+    end,
+  }
+
+  -- ###############################################################################
+  -- ###                              ERGONOMICS                                 ###
+  -- ###############################################################################
+
+  use 'editorconfig/editorconfig-vim'
+  use 'rhysd/git-messenger.vim'
+  use 'pechorin/any-jump.vim'
+  use { 'mattn/gist-vim', requires = { 'mattn/webapi-vim' } }
+  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup {} end }
+  use { 'pwntester/octo.nvim', config = function() require'octo'.setup {} end }
+  use { 'folke/which-key.nvim', config = function() require('which-key').setup {} end }
+  use { 'dyng/ctrlsf.vim', config = function() nmap('<C-s>f', ':CtrlSF<SPACE>', { noremap = true }) end }
+  use { 'rmagatti/goto-preview', config = function() require('goto-preview').setup { default_mappings = true } end }
+
+  use {
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require('todo-comments').setup {} end,
+  }
+
+  use {
+    'liuchengxu/vista.vim',
+    config = function()
+      vim.g.vista_ctags_executable = 'ctags'
+      vim.g.vista_default_executive = 'nvim_lsp'
+      vim.g['vista#executives'] = { 'nvim_lsp', 'ctags' }
+
+      nmap('<Leader>v', ':Vista!!<CR>', { noremap = true })
+    end,
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('gitsigns').setup {
+        current_line_blame = true,
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+          delay = 1000,
+        },
+        current_line_blame_formatter_opts = { relative_time = false },
+      }
+    end,
   }
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {
-      {'nvim-lua/popup.nvim'},
-      {'nvim-lua/plenary.nvim'}
-    },
+    requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
     config = function()
       require('telescope').setup {
         defaults = {
           sorting_strategy = 'ascending',
-          layout_config = {
-            prompt_position = 'top',
-          },
+          layout_config = { prompt_position = 'top' },
           set_env = { ['COLORTERM'] = 'truecolor' },
           color_devicons = false,
-          file_ignore_patterns = {
-            'vendor',
-            'node_modules',
-            'fish/functions',
-            'fish/completions',
-            'fish/conf.d'
-          },
-        }
+          file_ignore_patterns = { 'vendor', 'node_modules' },
+        },
       }
 
       -- Mappings.
@@ -234,23 +224,12 @@ return require('packer').startup(function()
   }
 
   use {
-    'rmagatti/goto-preview',
-    config = function()
-      require('goto-preview').setup {
-        default_mappings = true
-      }
-    end
-  }
-
-  use {
     'neovim/nvim-lspconfig',
     config = function()
-      local on_attach = function(_)
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-          virtual_text = {
-            prefix = "●",
-          }
-        })
+      local on_attach = function(client, bufnr)
+        require("aerial").on_attach(client, bufnr)
+        vim.lsp.handlers["textDocument/publishDiagnostics"] =
+          vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = { prefix = "●" } })
 
         -- Mappings.
         local opts = { noremap = true, silent = true }
@@ -279,28 +258,17 @@ return require('packer').startup(function()
         vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
       end
 
-
-      local nvim_lsp = require('lspconfig')
-      local servers = { 'gopls', 'rust_analyzer', 'terraformls', 'tflint', 'yamlls' }
+      local servers = { 'efm', 'gopls', 'rust_analyzer', 'terraformls', 'tflint', 'yamlls' }
+      local lspconfig = require('lspconfig')
       for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup {
-          settings = {
-            gopls = {
-              experimentalPostfixCompletions = true,
-              analyses = {
-                unusedparams = true,
-                shadow = true,
-              },
-              staticcheck = true,
-            },
-          },
+        lspconfig[lsp].setup {
           on_attach = on_attach,
-          flags = {
-            debounce_text_changes = 500,
-          }
+          flags = { debounce_text_changes = 500, exit_timeout = 0 },
+          single_file_support = true,
+          settings = require('garu.lsp_settings'),
         }
       end
-    end
+    end,
   }
 
   trial(use)

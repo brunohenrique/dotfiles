@@ -93,6 +93,6 @@ nmap('<Right>', ':echoe "Use l"<CR>', { noremap = true })
 nmap('<Up>', ':echoe "Use k"<CR>', { noremap = true })
 nmap('<Down>', ':echoe "Use j"<CR>', { noremap = true })
 
-cmd([[colorscheme nord]])
+cmd([[colorscheme nordic]])
 
-require("plugins")
+require('plugins')
