@@ -1,5 +1,6 @@
--------------------- Helpers ---------------------
+------------------- Helpers ---------------------
 function nmap(...) vim.api.nvim_set_keymap('n', ...) end
+function imap(...) vim.api.nvim_set_keymap('i', ...) end
 
 -- For more information :h lua-vim-options
 local cmd = vim.cmd -- Behaves like :cmd('<something>')
@@ -85,6 +86,7 @@ cmd([[
   autocmd VimResized * :wincmd =
 ]])
 
+imap('<C-c>', '<Esc>', { noremap = true })
 nmap('<Left>', ':echoe "Use h"<CR>', { noremap = true })
 nmap('<Right>', ':echoe "Use l"<CR>', { noremap = true })
 nmap('<Up>', ':echoe "Use k"<CR>', { noremap = true })
