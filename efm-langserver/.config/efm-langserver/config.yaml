@@ -1,0 +1,59 @@
+version: 2
+root-markers:
+  - .git/
+lint-debounce: 1s
+
+tools:
+  lua-lua-format: &lua-lua-format
+    format-command: 'lua-format -c ~/.config/lua-format/config -i'
+    format-stdin: true
+
+  sh-shellcheck: &sh-shellcheck
+    lint-command: 'shellcheck -f gcc -x'
+    lint-source: 'shellcheck'
+    lint-formats:
+      - '%f:%l:%c: %trror: %m'
+      - '%f:%l:%c: %tarning: %m'
+      - '%f:%l:%c: %tote: %m'
+
+  sh-shfmt: &sh-shfmt
+    format-command: 'shfmt -ci -s -bn'
+    format-stdin: true
+
+  json-jq: &json-jq
+    lint-command: 'jq .'
+
+  markdown-markdownlint: &markdown-markdownlint
+    lint-command: 'markdownlint -s -c %USERPROFILE%\.markdownlintrc'
+    lint-stdin: true
+    lint-formats:
+      - '%f:%l %m'
+      - '%f:%l:%c %m'
+      - '%f: %l: %m'
+
+  markdown-pandoc: &markdown-pandoc
+    format-command: 'pandoc -f markdown -t gfm -sp --tab-stop=2'
+
+  yaml-yamllint: &yaml-yamllint
+    lint-command: 'yamllint -f parsable -'
+    lint-stdin: true
+
+  make-checkmake: &make-checkmake
+    lint-command: 'checkmake'
+    lint-stdin: true
+
+languages:
+  lua:
+    - <<: *lua-lua-format
+  sh:
+    - <<: *sh-shellcheck
+    - <<: *sh-shfmt
+  json:
+    - <<: *json-jq
+  markdown:
+    - <<: *markdown-markdownlint
+    - <<: *markdown-pandoc
+  yaml:
+    - <<: *yaml-yamllint
+  make:
+    - <<: *make-checkmake
