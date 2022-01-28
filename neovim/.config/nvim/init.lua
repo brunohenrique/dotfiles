@@ -11,6 +11,7 @@ local wo  = vim.wo  -- Behaves like :setlocal for window-local options
 local fn  = vim.fn  -- Call Vim functions
 
 -------------------- Options ---------------------
+opt.spell          = false
 opt.termguicolors  = true  -- Enable 24-bit RGB colors
 opt.number         = true
 opt.relativenumber = true
