@@ -107,6 +107,11 @@ return require('packer').startup(function()
             { 'TelescopePromptBorder', c.blue },
             { 'TelescopeResultsBorder', c.blue },
             { 'TelescopePreviewBorder', c.blue },
+            { { 'TSInclude', 'TSLabel' }, c.purple },
+            { { 'TSType', 'TSVariable' }, c.blue },
+            { { 'TSKeyword', 'TSField' }, c.intense_blue },
+            { { 'TSString', 'TSStringSpecial', 'String' }, c.cyan },
+            { { 'TSFuncMacro' }, c.bright_cyan },
           }
         end,
       })
@@ -121,6 +126,7 @@ return require('packer').startup(function()
 
   use {
     'nvim-treesitter/nvim-treesitter',
+    requires = 'nvim-treesitter/playground',
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
