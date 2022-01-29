@@ -1,8 +1,8 @@
 # <type>[scope]: <description>
 #   │       │             │
-#   │       │             └─> description in present tense. Not capitalized. No period at the end.
+#   │       │             └─> Description in present tense. Not capitalized. No period at the end.
 #   │       │
-#   │       └─> A scope MUST consist of a noun describing a
+#   │       └─> (Optional) A scope MUST consist of a noun describing a
 #   |            section of the codebase surrounded by parenthesis, e.g., fix(parser):
 #   │
 #   └─> Type: build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test
@@ -25,7 +25,7 @@
 # - style:    Changes that do not affect the meaning of the code
 # - test:     Adding missing or correcting existing tests
 
-# scope:
+# optional scope:
 #
 # - A scope MAY be provided after a type.
 # - A scope MUST consist of a noun describing a section of the codebase surrounded
