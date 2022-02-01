@@ -35,7 +35,7 @@ function trial(use)
     -- }
     plugins = require('trial.plugins').plugins()
     for key, value in pairs(plugins) do
-      use { value[1], config = value[2] }
+      use { value[1], requires = value[2], config = value[3] }
     end
   end
 end
@@ -108,7 +108,7 @@ return require('packer').startup(function()
             { 'TelescopeResultsBorder', c.blue },
             { 'TelescopePreviewBorder', c.blue },
             { { 'TSInclude', 'TSLabel' }, c.purple },
-            { { 'TSType', 'TSVariable' }, c.blue },
+            { { 'TSType', 'TSVariable', 'Special' }, c.blue },
             { { 'TSKeyword', 'TSField' }, c.intense_blue },
             { { 'TSString', 'TSStringSpecial', 'String' }, c.cyan },
             { { 'TSFuncMacro' }, c.bright_cyan },
@@ -127,7 +127,7 @@ return require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = 'nvim-treesitter/playground',
-    run = ':TSUpdate',
+    run = '<CMD>TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = 'maintained', -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -169,7 +169,7 @@ return require('packer').startup(function()
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup {} end }
   use { 'pwntester/octo.nvim', config = function() require'octo'.setup {} end }
   use { 'folke/which-key.nvim', config = function() require('which-key').setup {} end }
-  use { 'dyng/ctrlsf.vim', config = function() nmap('<C-s>f', ':CtrlSF<SPACE>', { noremap = true }) end }
+  use { 'dyng/ctrlsf.vim', config = function() nmap('<C-s>f', '<CMD>CtrlSF<SPACE>', { noremap = true }) end }
   use { 'rmagatti/goto-preview', config = function() require('goto-preview').setup { default_mappings = true } end }
 
   use {
@@ -185,7 +185,7 @@ return require('packer').startup(function()
       vim.g.vista_default_executive = 'nvim_lsp'
       vim.g['vista#executives'] = { 'nvim_lsp', 'ctags' }
 
-      nmap('<Leader>v', ':Vista!!<CR>', { noremap = true })
+      nmap('<Leader>v', '<CMD>Vista!!<CR>', { noremap = true })
     end,
   }
 
@@ -226,6 +226,8 @@ return require('packer').startup(function()
       nmap('<Leader>fg', '<CMD>lua require("telescope.builtin").live_grep()<CR>', opts)
       nmap('<Leader>fb', '<CMD>lua require("telescope.builtin").buffers()<CR>', opts)
       nmap('<Leader>fn', '<CMD>lua require("telescope.builtin").help_tags()<CR>', opts)
+      nmap('<Leader>ca', '<CMD>lua require("telescope.builtin").lsp_code_actions()<CR>', opts)
+      nmap('<Leader>di', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)
     end,
   }
 
@@ -241,23 +243,23 @@ return require('packer').startup(function()
         local opts = { noremap = true, silent = true }
 
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        nmap('gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        nmap('gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-        nmap('K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-        nmap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        nmap('<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-        nmap('<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-        nmap('<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-        nmap('<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-        nmap('<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        nmap('<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-        nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        nmap('<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-        nmap('[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-        nmap(']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-        nmap('<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-        nmap('<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+        nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
+        nmap('gd', '<CMD>lua vim.lsp.buf.definition()<CR>', opts)
+        nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
+        nmap('gi', '<CMD>lua vim.lsp.buf.implementation()<CR>', opts)
+        nmap('<C-k>', '<CMD>lua vim.lsp.buf.signature_help()<CR>', opts)
+        nmap('<space>wa', '<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+        nmap('<space>wr', '<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+        nmap('<space>wl', '<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+        nmap('<space>D', '<CMD>lua vim.lsp.buf.type_definition()<CR>', opts)
+        nmap('<space>rn', '<CMD>lua vim.lsp.buf.rename()<CR>', opts)
+        nmap('<space>ca', '<CMD>lua vim.lsp.buf.code_action()<CR>', opts)
+        nmap('gr', '<CMD>lua vim.lsp.buf.references()<CR>', opts)
+        nmap('<space>e', '<CMD>lua vim.diagnostic.open_float(0, { scope = "line", border = "single" })<CR>', opts)
+        nmap('[d', '<CMD>lua vim.diagnostic.goto_next({ float =  { border = "single" }})<CR>', opts)
+        nmap(']d', '<CMD>lua vim.diagnostic.goto_prev({ float =  { border = "single" }})<CR>', opts)
+        nmap('<space>q', '<CMD>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+        nmap('<space>f', '<CMD>lua vim.lsp.buf.formatting()<CR>', opts)
 
         -- Use LSP as the handler for omnifunc.
         --    See `:help omnifunc` and `:help ins-completion` for more information.

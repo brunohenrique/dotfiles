@@ -88,10 +88,10 @@ cmd([[
 ]])
 
 imap('<C-c>', '<Esc>', { noremap = true })
-nmap('<Left>', ':echoe "Use h"<CR>', { noremap = true })
-nmap('<Right>', ':echoe "Use l"<CR>', { noremap = true })
-nmap('<Up>', ':echoe "Use k"<CR>', { noremap = true })
-nmap('<Down>', ':echoe "Use j"<CR>', { noremap = true })
+nmap('<Left>', '<CMD>echoe "Use h"<CR>', { noremap = true })
+nmap('<Right>', '<CMD>echoe "Use l"<CR>', { noremap = true })
+nmap('<Up>', '<CMD>echoe "Use k"<CR>', { noremap = true })
+nmap('<Down>', '<CMD>echoe "Use j"<CR>', { noremap = true })
 
 cmd([[colorscheme nordic]])
 
