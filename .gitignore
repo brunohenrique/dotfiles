@@ -1,9 +1,17 @@
+# vim
 vim/.vim/plugged/
 vim/.vim/backups/*
 vim/.vim/autoload/plug.vim
+
+# neovim
 neovim/.config/nvim/autoload/
 neovim/.config/nvim/plugin/
+
+# fish
 fish/.config/fish/completions/
 fish/.config/fish/conf.d/
 fish/.config/fish/functions/
 fish/.config/fish/fish_variables
+
+# yabai
+yabai/.config/yabai/*local*
