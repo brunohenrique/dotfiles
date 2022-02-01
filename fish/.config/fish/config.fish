@@ -19,7 +19,8 @@ set -gx LC_ALL en_US.UTF-8
 set -gx GPG_TTY (tty)
 set -gx KUBE_EDITOR "nvim"
 set -gx EDITOR "nvim"
-set -gx GOPATH "/Users/bruno.costa/Workspace/go"
+set -gx GOPATH $HOME/Workspace/go
+set -gx HOMEBREW_BUNDLE_FILE $HOME/.config/brew/Brewfile
 set -gx FZF_DEFAULT_OPTS '
      --height 40%
      --layout=reverse
