@@ -1,3 +1,5 @@
+require('plugins')
+
 ------------------- Helpers ---------------------
 function nmap(...) vim.api.nvim_set_keymap('n', ...) end
 function imap(...) vim.api.nvim_set_keymap('i', ...) end
@@ -94,5 +96,3 @@ nmap('<Up>', '<CMD>echoe "Use k"<CR>', { noremap = true })
 nmap('<Down>', '<CMD>echoe "Use j"<CR>', { noremap = true })
 
 cmd([[colorscheme nordic]])
-
-require('plugins')
