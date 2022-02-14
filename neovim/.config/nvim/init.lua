@@ -94,5 +94,3 @@ nmap('<Left>', '<CMD>echoe "Use h"<CR>', { noremap = true })
 nmap('<Right>', '<CMD>echoe "Use l"<CR>', { noremap = true })
 nmap('<Up>', '<CMD>echoe "Use k"<CR>', { noremap = true })
 nmap('<Down>', '<CMD>echoe "Use j"<CR>', { noremap = true })
-
-cmd([[colorscheme nordic]])
