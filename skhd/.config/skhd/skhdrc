@@ -82,8 +82,8 @@ alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
-alt - p : yabai -m window --focus stack.prev
-alt - n : yabai -m window --focus stack.next
+shift + alt - p : yabai -m window --focus stack.prev
+shift + alt - n : yabai -m window --focus stack.next
 
 # swap window
 shift + alt - x : yabai -m window --swap recent
@@ -217,7 +217,7 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
 # toggle window split type
-alt - e : yabai -m window --toggle split
+shift + alt - e : yabai -m window --toggle split
 
 # float / unfloat window and restore position
 # alt - t : yabai -m window --toggle float && /tmp/yabai-restore/$(yabai -m query --windows --window | jq -re '.id').restore 2>/dev/null || true
