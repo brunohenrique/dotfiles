@@ -18,7 +18,11 @@ project_folder=$(fd . --type d $PROJECTS_DIRS --max-depth 1 | fzf)
 session_name=$(echo "$project_folder" | awk -F "/" '{print $NF}')
 
 if ! tmux has-session -t "$session_name" 2>/dev/null; then
-  tmux new-session -d -s "$session_name" -c "$project_folder"
+	tmux new-session -d -s "$session_name" -c "$project_folder"
+fi
+
+if [[ $session_name == "" ]]; then
+  exit 0;
 fi
 
 tmux switch-client -t "$session_name"
