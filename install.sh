@@ -5,7 +5,7 @@ git clone git@github.com:brunohenrique/dotfiles.git ~/.dotfiles && cd ~/.dotfile
 mkdir ~/.config
 for package in */
 do
-  stow --verbose=2 "$package"
+  stow --verbose=2 "$package" --target="$HOME"
 done
 
 if [ -s ~/.vim/autoload/plug.vim ]; then
@@ -24,6 +24,8 @@ fi
 
 
 vim +PlugInstall +qall
+
+echo "Installing Neovim plugins ..."
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 git clone git@github.com:powerline/fonts.git ~/fonts
