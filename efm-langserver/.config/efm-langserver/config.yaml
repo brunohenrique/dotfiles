@@ -1,3 +1,4 @@
+---
 version: 2
 root-markers:
   - .git/
@@ -24,7 +25,7 @@ tools:
     lint-command: 'jq .'
 
   markdown-markdownlint: &markdown-markdownlint
-    lint-command: 'markdownlint -s -c %USERPROFILE%\.markdownlintrc'
+    lint-command: 'markdownlint -s -c $HOME/.config/markdownlint/markdownlintrc.yaml'
     lint-stdin: true
     lint-formats:
       - '%f:%l %m'
@@ -35,7 +36,7 @@ tools:
     format-command: 'pandoc -f markdown -t gfm -sp --tab-stop=2'
 
   yaml-yamllint: &yaml-yamllint
-    lint-command: 'yamllint -f parsable -'
+    lint-command: 'yamllint -c $HOME/.config/yamllint/yamllintrc.yaml -f parsable -'
     lint-stdin: true
 
   make-checkmake: &make-checkmake
