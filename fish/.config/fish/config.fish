@@ -1,9 +1,9 @@
-#    __ _     _     
-#   / _(_)___| |__  
-#  | |_| / __| '_ \ 
+#    __ _     _
+#   / _(_)___| |__
+#  | |_| / __| '_ \
 #  |  _| \__ \ | | |
 #  |_| |_|___/_| |_|
-#      
+#
 
 ###############################################################################
 ###                              GENERAL                                    ###
@@ -33,13 +33,15 @@ set -gx FZF_DEFAULT_OPTS '
 fish_add_path $HOME/.cargo/bin
 fish_add_path $GOPATH/bin
 fish_add_path $HOME/.krew/bin
+fish_add_path /opt/local/bin
+fish_add_path /opt/local/sbin
 
 test -e ~/.dir_colors && eval (gdircolors --c-shell ~/.dir_colors)
 
 ###############################################################################
 ###                              ALIASES                                    ###
 ###############################################################################
-alias tlarepl="java -cp /usr/local/lib/tla2tools.jar tlc2.REPL" 
+alias tlarepl="java -cp /usr/local/lib/tla2tools.jar tlc2.REPL"
 
 ###############################################################################
 ###                              ERGONOMICS                                 ###
@@ -51,7 +53,7 @@ end
 
 function system_update
   fisher update
-  brew upgrade
+  brew bundle -v
   nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
   . ~/.config/fish/config.fish
 end
