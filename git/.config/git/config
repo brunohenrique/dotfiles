@@ -8,6 +8,7 @@
 	autocrlf     = input
   editor       = nvim -f
 	excludesfile = ~/.config/git/.gitignore
+  pager        = delta
 
 [github]
   user = brunohenrique
@@ -31,6 +32,10 @@
   # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
   # instead of a/b/c/d as prefixes for patches
   mnemonicprefix = true
+  colorMoved     = default
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
 
 [rerere]
   # Remember my merges
@@ -74,10 +79,50 @@
   pretty = format:%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %C(reset)[%C(blue)%an%C(reset)]%C(bold yellow)%d%C(reset)
 
 [alias]
-  l    = log --graph --abbrev-commit --date=relative
-  ll   = log --graph --abbrev-commit --date=relative --name-status
-  lp   = log --graph --abbrev-commit --date=relative -p
-  logt = log --graph --abbrev-commit --decorate --date=relative --all
+  sdiff = -c delta.side-by-side=true diff
+  l     = log --graph --abbrev-commit --date=relative
+  ll    = log --graph --abbrev-commit --date=relative --name-status
+  lp    = log --graph --abbrev-commit --date=relative -p
+  logt  = log --graph --abbrev-commit --decorate --date=relative --all
+
+[delta]
+  commit-style                  = raw
+  file-style                    = bold yellow
+  hunk-header-style             = bold purple
+  minus-style                   = bold red
+  minus-non-emph-style          = bold red
+  minus-emph-style              = bold red 52
+  minus-empty-line-marker-style = normal "#3f0001"
+  zero-style                    = normal
+  plus-style                    = green
+  plus-non-emph-style           = green
+  plus-emph-style               = bold green 22
+  plus-empty-line-marker-style  = normal "#002800"
+  grep-file-style               = blue
+  grep-line-number-style        = blue
+  whitespace-error-style        = reverse purple
+  blame-palette                 = normal
+  true-color                    = always
+  file-added-label              = added:
+  file-modified-label           = Δ
+  file-removed-label            = removed:
+  file-renamed-label            = renamed:
+  right-arrow                   = '⟶  '
+  inspect-raw-lines             = true
+  keep-plus-minus-markers       = true
+  max-line-distance             = 0.6
+  max-line-length               = 512
+  diff-stat-align-width         = 48
+  line-fill-method              = ansi
+  navigate                      = true  # use n and N to move between diff sections
+  paging                        = auto
+  side-by-side                  = false
+  syntax-theme                  = Nord
+  width                         = 138
+  tabs                          = 4
+
+[delta "interactive"]
+    keep-plus-minus-markers = true
 
 [include]
   path = local.inc
