@@ -31,6 +31,7 @@ opt.linebreak      = true  -- Wrap lines at convenient points"
 opt.scrolloff      = 8     -- Start scrolling when we're 8 lines away from margins
 opt.sidescrolloff  = 15
 opt.sidescroll     = 1
+opt.signcolumn     = 'yes'
 
 -- Turn Off Swap Files
 opt.swapfile = false
@@ -88,6 +89,27 @@ cmd([[
   " automatically rebalance windows on vim resize
   autocmd VimResized * :wincmd =
 ]])
+
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●',       -- Could be '■', '▎', 'x'
+    source = "always",  -- Or "if_many"
+  },
+  float = {
+    source = "always",  -- Or "if_many"
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
 
 imap('<C-c>', '<Esc>', { noremap = true })
 nmap('<Left>', '<CMD>echoe "Use h"<CR>', { noremap = true })

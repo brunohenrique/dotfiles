@@ -270,7 +270,7 @@ return require('packer').startup({
         -- Mappings.
         local opts = { noremap = true, silent = true }
         nmap('<Leader>ff', '<CMD>lua require("telescope.builtin").find_files({ hidden = true })<CR>', opts)
-        nmap('<Leader>fd', '<CMD>lua require("garu.telescope").dotfiles()<CR>', opts)
+        nmap('<Leader>fd', '<CMD>lua require("user.telescope").dotfiles()<CR>', opts)
         nmap('<Leader>fg', '<CMD>lua require("telescope.builtin").live_grep()<CR>', opts)
         nmap('<Leader>fb', '<CMD>lua require("telescope.builtin").buffers()<CR>', opts)
         nmap('<Leader>fn', '<CMD>lua require("telescope.builtin").help_tags()<CR>', opts)
@@ -283,9 +283,6 @@ return require('packer').startup({
       'neovim/nvim-lspconfig',
       config = function()
         local on_attach = function(client, bufnr)
-          vim.lsp.handlers["textDocument/publishDiagnostics"] =
-            vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = { prefix = "●" } })
-
           -- Mappings.
           local opts = { noremap = true, silent = true }
 
@@ -313,14 +310,17 @@ return require('packer').startup({
           vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
         end
 
-        local servers = { 'efm', 'gopls', 'rust_analyzer', 'terraformls', 'tflint', 'yamlls' }
+        local settings = require('user.lsp_settings')
+        settings.protocol()
+
         local lspconfig = require('lspconfig')
+        local servers = { 'efm', 'gopls', 'rust_analyzer', 'pyright', 'terraformls', 'tflint' }
         for _, lsp in ipairs(servers) do
           lspconfig[lsp].setup {
             on_attach = on_attach,
             flags = { debounce_text_changes = 500, exit_timeout = 0 },
             single_file_support = true,
-            settings = require('garu.lsp_settings'),
+            settings = settings.languages,
           }
         end
       end,
