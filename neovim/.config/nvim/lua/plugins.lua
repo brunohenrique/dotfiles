@@ -9,12 +9,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+vim.cmd([[ augroup packer_user_config ]])
+vim.cmd([[ autocmd! ]])
+vim.cmd([[ autocmd BufWritePost plugins.lua source <afile> | PackerCompile ]])
+vim.cmd([[ augroup end ]])
 
 -- Enables the use of plugins when the commitment to it is uncertain. It helps
 -- to avoid changes to the "lua/plugins.lua" file, decreasing the churn rate

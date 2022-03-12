@@ -72,23 +72,17 @@ cmd([[ silent !mkdir ~/.nvim/backups > /dev/null 2>&1 ]])
 opt.undofile = true
 opt.undodir  = os.getenv 'HOME' .. '/.nvim/backups'
 
-cmd([[
-  " Netrw
-  let netrw_altv = 1
-  let netrw_liststyle = 3
-]])
+-- Netrw
+cmd([[ let netrw_altv = 1 ]])
+cmd([[ let netrw_liststyle = 3 ]])
 
-cmd([[
-  augroup highlight_yank
-      autocmd!
-      au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100}
-  augroup END
-]])
+cmd([[ augroup highlight_yank ]])
+cmd([[ autocmd! ]])
+cmd([[ au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100} ]])
+cmd([[ augroup END ]])
 
-cmd([[
-  " automatically rebalance windows on vim resize
-  autocmd VimResized * :wincmd =
-]])
+-- automatically rebalance windows on vim resize
+cmd([[ autocmd VimResized * :wincmd = ]])
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
