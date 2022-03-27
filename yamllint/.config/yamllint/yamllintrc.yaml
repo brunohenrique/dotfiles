@@ -8,5 +8,4 @@ rules:
     min-spaces-inside: 1
     max-spaces-inside: 1
 
-  # don't bother me with this rule
-  # indentation: disable
+  indentation: disable
