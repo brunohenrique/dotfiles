@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Creates a note-taking Tmux session and opens it as a popup window.
+
+set -eou pipefail
+
+session_name=chaos
+active=$(tmux list-sessions | awk -F " " '{print $1 $NF}' | { grep $session_name || :; })
+
+if [[ $active = "" ]]; then
+  tmux display-popup -E "tmux new-session -A -s ${session_name} -c $HOME/Dropbox/anmerkungen"
+elif [[ ! $active == "$session_name:(attached)" ]]; then
+  tmux display-popup -E "tmux attach-session -t $session_name"
+else
+  tmux detach-client
+fi
