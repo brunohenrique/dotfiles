@@ -112,7 +112,7 @@ return require('packer').startup({
 
           -- Italics for certain keywords such as constructors, functions,
           -- labels and namespaces
-          italic = true,
+          italic = false,
 
           -- Italic styled comments
           italic_comments = true,
@@ -187,24 +187,21 @@ return require('packer').startup({
     -- ###                              ERGONOMICS                                 ###
     -- ###############################################################################
 
+    use { 'dyng/ctrlsf.vim', event = 'BufWinEnter' }
     use { 'editorconfig/editorconfig-vim', event = 'BufWinEnter' }
-    use { 'rhysd/git-messenger.vim', cmd = 'GitMessager' }
-    use { 'pechorin/any-jump.vim', cmd = 'AnyJump' }
     use { 'mattn/gist-vim', cmd = 'Gist', requires = { 'mattn/webapi-vim', opt = true } }
     use { 'numToStr/Comment.nvim', event = 'BufWinEnter', config = function() require('Comment').setup {} end }
+    use { 'pechorin/any-jump.vim', cmd = 'AnyJump' }
     use { 'pwntester/octo.nvim', cmd = 'Octo', config = function() require'octo'.setup {} end }
+    use { 'rhysd/git-messenger.vim', cmd = 'GitMessager' }
+    use { 'simrat39/symbols-outline.nvim' }
+
     use {
       'folke/which-key.nvim',
       config = function()
         require('which-key').setup { plugins = { spelling = { enabled = true, suggestions = 20 } } }
         require('user.keymaps').setup()
       end,
-    }
-
-    use {
-      'dyng/ctrlsf.vim',
-      event = 'BufWinEnter',
-      config = function() nmap('<C-s>f', ':CtrlSF<SPACE>', { noremap = true }) end,
     }
 
     use {
@@ -218,18 +215,6 @@ return require('packer').startup({
       event = 'BufWinEnter',
       requires = 'nvim-lua/plenary.nvim',
       config = function() require('todo-comments').setup {} end,
-    }
-
-    use {
-      'liuchengxu/vista.vim',
-      event = 'BufWinEnter',
-      config = function()
-        vim.g.vista_ctags_executable = 'ctags'
-        vim.g.vista_default_executive = 'nvim_lsp'
-        vim.g['vista#executives'] = { 'nvim_lsp', 'ctags' }
-
-        nmap('<Leader>v', '<CMD>Vista!!<CR>', { noremap = true })
-      end,
     }
 
     use {

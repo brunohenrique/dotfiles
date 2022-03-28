@@ -78,10 +78,10 @@ cmd([[ let netrw_liststyle = 3 ]])
 
 cmd([[ augroup highlight_yank ]])
 cmd([[ autocmd! ]])
-cmd([[ au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100} ]])
+cmd([[ autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100} ]])
 cmd([[ augroup END ]])
 
--- automatically rebalance windows on vim resize
+-- Automatically rebalance windows on vim resize
 cmd([[ autocmd VimResized * :wincmd = ]])
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
