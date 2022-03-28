@@ -1,5 +1,3 @@
-function nmap(...) vim.api.nvim_set_keymap('n', ...) end
-
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
@@ -197,9 +195,9 @@ return require('packer').startup({
     use { 'pwntester/octo.nvim', cmd = 'Octo', config = function() require'octo'.setup {} end }
     use {
       'folke/which-key.nvim',
-      event = 'BufWinEnter',
       config = function()
         require('which-key').setup { plugins = { spelling = { enabled = true, suggestions = 20 } } }
+        require('user.keymaps').setup()
       end,
     }
 
@@ -264,52 +262,20 @@ return require('packer').startup({
             file_ignore_patterns = { 'vendor', 'node_modules' },
           },
         }
-
-        -- Mappings.
-        local opts = { noremap = true, silent = true }
-        nmap('<Leader>ff', '<CMD>lua require("telescope.builtin").find_files({ hidden = true })<CR>', opts)
-        nmap('<Leader>fd', '<CMD>lua require("user.telescope").dotfiles()<CR>', opts)
-        nmap('<Leader>fg', '<CMD>lua require("telescope.builtin").live_grep()<CR>', opts)
-        nmap('<Leader>fb', '<CMD>lua require("telescope.builtin").buffers()<CR>', opts)
-        nmap('<Leader>fn', '<CMD>lua require("telescope.builtin").help_tags()<CR>', opts)
-        nmap('<Leader>ca', '<CMD>lua require("telescope.builtin").lsp_code_actions()<CR>', opts)
-        nmap('<Leader>di', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)
       end,
     }
 
     use {
       'neovim/nvim-lspconfig',
       config = function()
+        local settings = require('user.lsp_settings')
         local on_attach = function(client, bufnr)
-          -- Mappings.
-          local opts = { noremap = true, silent = true }
-
-          -- See `:help vim.lsp.*` for documentation on any of the below functions
-          nmap('gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
-          nmap('gd', '<CMD>lua vim.lsp.buf.definition()<CR>', opts)
-          nmap('K', '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
-          nmap('gi', '<CMD>lua vim.lsp.buf.implementation()<CR>', opts)
-          nmap('<C-k>', '<CMD>lua vim.lsp.buf.signature_help()<CR>', opts)
-          nmap('<space>wa', '<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-          nmap('<space>wr', '<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-          nmap('<space>wl', '<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-          nmap('<space>D', '<CMD>lua vim.lsp.buf.type_definition()<CR>', opts)
-          nmap('<space>rn', '<CMD>lua vim.lsp.buf.rename()<CR>', opts)
-          nmap('<space>ca', '<CMD>lua vim.lsp.buf.code_action()<CR>', opts)
-          nmap('gr', '<CMD>lua vim.lsp.buf.references()<CR>', opts)
-          nmap('<space>e', '<CMD>lua vim.diagnostic.open_float(0, { scope = "line", border = "single" })<CR>', opts)
-          nmap('[d', '<CMD>lua vim.diagnostic.goto_next({ float =  { border = "single" }})<CR>', opts)
-          nmap(']d', '<CMD>lua vim.diagnostic.goto_prev({ float =  { border = "single" }})<CR>', opts)
-          nmap('<space>q', '<CMD>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-          nmap('<space>f', '<CMD>lua vim.lsp.buf.formatting()<CR>', opts)
+          settings.setup()
 
           -- Use LSP as the handler for omnifunc.
           --    See `:help omnifunc` and `:help ins-completion` for more information.
           vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
         end
-
-        local settings = require('user.lsp_settings')
-        settings.protocol()
 
         local lspconfig = require('lspconfig')
         local servers = { 'efm', 'gopls', 'rust_analyzer', 'pyright', 'terraformls', 'tflint' }
