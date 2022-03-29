@@ -1,14 +1,26 @@
-My environment
-===================
+# My environment
+
+## Features
+1. [TEST](#test)
 
 ## Dependencies
 
+ - [Alacritty](https://github.com/jwilm/alacritty)
+ - [Bat](https://github.com/sharkdp/bat)
+ - [FZF](https://github.com/junegunn/fzf)
+ - [Fish Shell](https://fishshell.com/)
  - [GNU Stow](https://www.gnu.org/software/stow/)
  - [Git](https://git-scm.com/)
- - [Zplug](https://github.com/zplug/zplug)
+ - [Neovim](https://neovim.io/)
+ - [Universal Ctags](https://github.com/universal-ctags/ctags)
+ - [fd](https://github.com/sharkdp/fd)
+ - [tmux](https://github.com/tmux/tmux)
+ - [ShellCheck](https://www.shellcheck.net/)
+ - [jq](https://stedolan.github.io/jq/)
+ - [shfmt](https://github.com/mvdan/sh)
+ - [LuaFormatter](https://github.com/Koihik/LuaFormatter)
 
-Install
--------
+## Install
 
 ```bash
 $ git clone git@github.com:brunohenrique/dotfiles.git
@@ -16,8 +28,7 @@ $ cd dotfiles/
 $ ./install.sh
 ```
 
-Terminal bindings
-=================
+## Terminal bindings
 
 * `Ctrl-a` - Move to the start of the line.
 * `Ctrl-e` - Move to the end of the line.
@@ -46,6 +57,6 @@ Terminal bindings
 * `!^` - First argument of last command
 * `!*` - All arguments of last command
 * `!:[number]` - The [number] argument of last command
-* `^abc^xyz` - Replace first occurance of abc with xyz in last command
+* `^abc^xyz` - Replace first occurrence of abc with xyz in last command
   and execute it
 * `cd -` - Go to previous directory

@@ -71,6 +71,9 @@ return require('packer').startup({
     -- ###                              STYLING                                    ###
     -- ###############################################################################
 
+    use { 'stevearc/dressing.nvim' }
+    use { 'norcalli/nvim-colorizer.lua', config = function() require'colorizer'.setup {} end }
+
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -156,6 +159,7 @@ return require('packer').startup({
     -- ###                              LANGUAGES                                  ###
     -- ###############################################################################
 
+    use { 'Julian/lean.nvim' }
     use { 'lervag/vimtex', ft = { 'tex' }, config = function() vim.g.tex_flavor = 'latex' end }
 
     use {
