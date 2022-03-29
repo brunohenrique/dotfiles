@@ -209,6 +209,8 @@ return require('packer').startup({
     use { 'rhysd/git-messenger.vim', cmd = 'GitMessager' }
     use { 'simrat39/symbols-outline.nvim' }
 
+    use { 'L3MON4D3/LuaSnip', config = function() require("luasnip.loaders.from_lua").load({}) end }
+
     use {
       'folke/which-key.nvim',
       config = function()
