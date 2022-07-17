@@ -46,6 +46,7 @@ M.languages = {
     analyses = { unusedparams = true, shadow = true },
     completeUnimported = true,
     experimentalPostfixCompletions = true,
+    gofumpt = true,
     staticcheck = true,
   },
   ["rust-analyzer"] = {

@@ -1,3 +1,5 @@
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
@@ -7,10 +9,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
-vim.cmd([[ augroup packer_user_config ]])
-vim.cmd([[ autocmd! ]])
-vim.cmd([[ autocmd BufWritePost plugins.lua source <afile> | PackerCompile ]])
-vim.cmd([[ augroup end ]])
+-- local group = augroup('packer_user_config', { clear = true })
+-- autocmd('BufWritePost', { pattern = 'plugins.lua ', command = 'source <afile> | PackerCompile', group = group })
+local group = augroup('packer_user_config', { clear = true })
+autocmd('BufWritePost', { group = group, pattern = 'plugins.lua', command = 'source <afile> | PackerCompile' })
 
 -- Enables the use of plugins when the commitment to it is uncertain. It helps
 -- to avoid changes to the "lua/plugins.lua" file, decreasing the churn rate
@@ -168,7 +170,7 @@ return require('packer').startup({
       run = ':TSUpdate',
       config = function()
         require('nvim-treesitter.configs').setup {
-          ensure_installed = 'maintained', -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+          ensure_installed = 'all', -- one of "all", "maintained" (parsers with maintainers), or a list of languages
           ignore_install = {}, -- List of parsers to ignore installing
           highlight = {
             enable = true, -- false will disable the whole extension
@@ -251,7 +253,7 @@ return require('packer').startup({
 
     use {
       'nvim-telescope/telescope.nvim',
-      requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
+      requires = { 'nvim-lua/plenary.nvim' },
       config = function()
         require('telescope').setup {
           defaults = {
@@ -278,7 +280,7 @@ return require('packer').startup({
         end
 
         local lspconfig = require('lspconfig')
-        local servers = { 'efm', 'gopls', 'rust_analyzer', 'pyright', 'terraformls', 'tflint' }
+        local servers = { 'efm', 'gopls', 'rust_analyzer', 'pyright', 'terraformls', 'tflint', 'clangd', 'texlab' }
         for _, lsp in ipairs(servers) do
           lspconfig[lsp].setup {
             on_attach = on_attach,

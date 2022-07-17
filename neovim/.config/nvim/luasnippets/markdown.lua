@@ -1,4 +1,6 @@
 local date = function() return os.date('%B %d, %Y') end
+-- TODO: Create dynamic function to expand to heaaders
+local header = function(number) return os.date('%B %d, %Y') end
 
 local snippets = {
   s({ trig = 'fm', desc = 'Expands to Markdown front-matter' }, fmt([[
@@ -14,7 +16,7 @@ local snippets = {
   [{}]({})
   ]], { i(1, 'TEXT'), i(2, 'LINK') })),
 
-  s({ trig = 'cb', desc = 'Expands to Markdown codeblock' }, fmt([[
+  s({ trig = 'cb', desc = 'Expands to Markdown code block' }, fmt([[
   ```{}
   {}
   ```
