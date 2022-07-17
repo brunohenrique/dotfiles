@@ -53,7 +53,7 @@ end
 
 function system_update
   fisher update
-  brew bundle -v
+  brew bundle --cleanup -v
   nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
   . ~/.config/fish/config.fish
 end
