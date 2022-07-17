@@ -15,7 +15,7 @@ export FZF_DEFAULT_OPTS='
 PROJECTS_DIRS="$(cat ~/.config/tmux/projects_dirs)"
 
 project_folder=$(fd . --type d $PROJECTS_DIRS --max-depth 1 | fzf)
-session_name=$(echo "$project_folder" | awk -F "/" '{print $NF}')
+session_name=$(echo "$project_folder" | awk -F "/" '{print $(NF-1)}')
 
 if ! tmux has-session -t "$session_name" 2>/dev/null; then
 	tmux new-session -d -s "$session_name" -c "$project_folder"
