@@ -3,7 +3,7 @@
 #   │       │             └─> Description in present tense. Not capitalized. No period at the end.
 #   │       │
 #   │       └─> (Optional) A scope MUST consist of a noun describing a
-#   |            section of the codebase surrounded by parenthesis, e.g., fix(parser):
+#   │            section of the codebase surrounded by parenthesis, e.g., fix(parser):
 #   │
 #   └─> Type: build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test
 # <BLANK LINE>
