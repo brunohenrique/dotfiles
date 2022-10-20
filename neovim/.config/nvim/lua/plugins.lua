@@ -146,11 +146,11 @@ return require('packer').startup({
               { 'TelescopePromptBorder', c.blue },
               { 'TelescopeResultsBorder', c.blue },
               { 'TelescopePreviewBorder', c.blue },
-              { { 'TSInclude', 'TSLabel' }, c.purple },
-              { { 'TSType', 'TSVariable', 'Special' }, c.blue },
-              { { 'TSKeyword', 'TSField' }, c.intense_blue },
-              { { 'TSString', 'TSStringSpecial', 'String' }, c.cyan },
-              { { 'TSFuncMacro' }, c.bright_cyan },
+              { { '@include', '@label' }, c.purple },
+              { { '@type', '@variable', 'Special' }, c.blue },
+              { { '@keyword', '@field' }, c.intense_blue },
+              { { '@string', '@string.special', 'String' }, c.cyan },
+              { { '@function.macro' }, c.bright_cyan },
             }
           end,
         })
