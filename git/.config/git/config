@@ -1,3 +1,6 @@
+[init]
+	defaultBranch = main
+
 [user]
   name       = Bruno Henrique - Garu
   email      = squall.bruno@gmail.com
