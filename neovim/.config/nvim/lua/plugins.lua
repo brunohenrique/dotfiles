@@ -20,7 +20,7 @@ autocmd('BufWritePost', { group = group, pattern = 'plugins.lua', command = 'sou
 --
 -- It looks for the file "lua/trial/plugins.lua", if it exists, it loads it and
 -- calls the .plugins() function on the module.
-function trial(use)
+local function trial(use)
   if fn.filereadable(fn.expand('~/.config/nvim/lua/trial/plugins.lua')) == 1 then
     -- The .plugins() function must return a lua table in the format:
     -- {
@@ -57,15 +57,15 @@ function trial(use)
     --    },
     -- }
     -- Use ":help packer.use" to see the whole documentation.
-    plugins = require('trial.plugins').plugins()
-    for key, value in pairs(plugins) do
+    local plugins = require('trial.plugins').plugins()
+    for _, value in pairs(plugins) do
       use(value)
     end
   end
 end
 
 return require('packer').startup({
-  function()
+  function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
@@ -141,7 +141,7 @@ return require('packer').startup({
 
           -- Callback function to define custom color groups
           -- See 'lua/nordic/colors/example.lua' for example defitions
-          custom_colors = function(c, s, cs)
+          custom_colors = function(c, _, _)
             return {
               { 'TelescopePromptBorder', c.blue },
               { 'TelescopeResultsBorder', c.blue },

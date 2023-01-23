@@ -48,7 +48,7 @@ n_mappings = {
     },
     e = { '<CMD>lua vim.diagnostic.open_float(0, { scope = "line", border = "single" })<CR>', 'Diagnostics' },
     K = { '<CMD>lua vim.lsp.buf.hover()<CR>', 'Hover Information' },
-    f = { '<CMD>lua vim.lsp.buf.formatting()<CR>', 'Code Formating' },
+    f = { '<CMD>lua vim.lsp.buf.format({async = true})<CR>', 'Code Formating' },
     q = { '<CMD>lua vim.lsp.diagnostic.setloclist()<CR>', 'Set Loclist' },
     D = { '<CMD>lua vim.lsp.buf.type_definition()<CR>', 'Type Definition' },
     c = {
