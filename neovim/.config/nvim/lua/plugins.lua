@@ -78,7 +78,7 @@ return require('packer').startup({
 
     use {
       'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      requires = { 'kyazdani42/nvim-web-devicons' },
       event = 'BufWinEnter',
       config = function()
         require('lualine').setup {
@@ -204,14 +204,74 @@ return require('packer').startup({
 
     use { 'dyng/ctrlsf.vim', event = 'BufWinEnter' }
     use { 'editorconfig/editorconfig-vim', event = 'BufWinEnter' }
-    use { 'mattn/gist-vim', cmd = 'Gist', requires = { 'mattn/webapi-vim', opt = true } }
+    use { 'mattn/gist-vim', cmd = 'Gist', requires = { 'mattn/webapi-vim' } }
     use { 'numToStr/Comment.nvim', event = 'BufWinEnter', config = function() require('Comment').setup {} end }
     use { 'pechorin/any-jump.vim', cmd = 'AnyJump' }
-    use { 'pwntester/octo.nvim', cmd = 'Octo', config = function() require'octo'.setup {} end }
     use { 'rhysd/git-messenger.vim', cmd = 'GitMessager' }
-    use { 'simrat39/symbols-outline.nvim' }
-
     use { 'L3MON4D3/LuaSnip', config = function() require("luasnip.loaders.from_lua").load({}) end }
+    use { "neovim/nvim-lspconfig" }
+    use { "williamboman/mason.nvim", config = function() require("mason").setup() end }
+
+    use {
+      "williamboman/mason-lspconfig.nvim",
+      after = "mason.nvim",
+      config = function()
+        require("mason-lspconfig").setup({
+          ensure_installed = {
+            'sumneko_lua',
+            'rust_analyzer',
+            'efm',
+            'gopls',
+            'pyright',
+            'terraformls',
+            'tflint',
+            'clangd',
+            'texlab',
+            'yamlls',
+            'r_language_server',
+          },
+        })
+        local settings = require('user.lsp_settings')
+        local on_attach = function(_, _)
+          settings.setup()
+
+          -- Use LSP as the handler for omnifunc.
+          --    See `:help omnifunc` and `:help ins-completion` for more information.
+          vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        end
+        require("mason-lspconfig").setup_handlers({
+          -- The first entry (without a key) will be the default handler
+          -- and will be called for each installed server that doesn't have
+          -- a dedicated handler.
+          function(server_name) -- default handler (optional)
+            require("lspconfig")[server_name].setup({
+              on_attach = on_attach,
+              flags = { debounce_text_changes = 500, exit_timeout = 0 },
+              single_file_support = true,
+              settings = settings.languages,
+            })
+          end,
+          -- Next, you can provide targeted overrides for specific servers.
+          -- For example, a handler override for the `rust_analyzer`:
+          -- ["rust_analyzer"] = function ()
+          --     require("rust-tools").setup {}
+          -- end
+        })
+      end,
+    }
+
+    use {
+      'rbjorklin/symbols-outline.nvim',
+      branch = 'fix-outline-detection',
+      config = function() require('symbols-outline').setup({ wrap = true }) end,
+    }
+
+    use {
+      'pwntester/octo.nvim',
+      requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim', 'kyazdani42/nvim-web-devicons' },
+      cmd = 'Octo',
+      config = function() require"octo".setup() end,
+    }
 
     use {
       'folke/which-key.nvim',
@@ -264,31 +324,7 @@ return require('packer').startup({
             file_ignore_patterns = { 'vendor', 'node_modules' },
           },
         }
-      end,
-    }
-
-    use {
-      'neovim/nvim-lspconfig',
-      config = function()
-        local settings = require('user.lsp_settings')
-        local on_attach = function(client, bufnr)
-          settings.setup()
-
-          -- Use LSP as the handler for omnifunc.
-          --    See `:help omnifunc` and `:help ins-completion` for more information.
-          vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-        end
-
-        local lspconfig = require('lspconfig')
-        local servers = { 'efm', 'gopls', 'rust_analyzer', 'pyright', 'terraformls', 'tflint', 'clangd', 'texlab' }
-        for _, lsp in ipairs(servers) do
-          lspconfig[lsp].setup {
-            on_attach = on_attach,
-            flags = { debounce_text_changes = 500, exit_timeout = 0 },
-            single_file_support = true,
-            settings = settings.languages,
-          }
-        end
+        require("telescope").load_extension("command_center")
       end,
     }
 

@@ -49,7 +49,7 @@ M.languages = {
     gofumpt = true,
     staticcheck = true,
   },
-  ["rust-analyzer"] = {
+  rust_analyzer = {
     assist = { importGranularity = "module", importPrefix = "by_self" },
     cargo = { loadOutDirsFromCheck = true },
     checkOnSave = { command = "clippy" },
@@ -57,6 +57,7 @@ M.languages = {
     procMacro = { enable = true },
   },
   yaml = { schemas = { kubernetes = '**/templates/*.yaml' } },
+  Lua = { diagnostics = { globals = { 'vim' } } },
 }
 
 return M
