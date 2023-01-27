@@ -324,7 +324,6 @@ return require('packer').startup({
             file_ignore_patterns = { 'vendor', 'node_modules' },
           },
         }
-        require("telescope").load_extension("command_center")
       end,
     }
 
