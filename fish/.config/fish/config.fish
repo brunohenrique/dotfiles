@@ -35,6 +35,7 @@ fish_add_path $GOPATH/bin
 fish_add_path $HOME/.krew/bin
 fish_add_path /opt/local/bin
 fish_add_path /opt/local/sbin
+fish_add_path /usr/local/sbin
 
 test -e ~/.dir_colors && eval (gdircolors --c-shell ~/.dir_colors)
 
