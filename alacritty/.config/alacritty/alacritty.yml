@@ -468,12 +468,10 @@ cursor:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: /usr/local/bin/fish
-  args:
-    - --login
-    # - --init-command
-    # - cowsay -f dragon-and-cow "WELCOME:" (date)
+# shell:
+#   program: /opt/homebrew/bin/fish
+#   args:
+#   - --login
 
 # Startup directory
 #

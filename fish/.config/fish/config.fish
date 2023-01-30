@@ -8,6 +8,7 @@
 ###############################################################################
 ###                              GENERAL                                    ###
 ###############################################################################
+eval (/opt/homebrew/bin/brew shellenv)
 if status --is-interactive
 and not set -q TMUX # https://github.com/fish-shell/fish-shell/issues/4434#issuecomment-332626369
     tmux new-session -A -s personal
@@ -16,9 +17,9 @@ end
 set fish_theme nord
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
-set -gx GPG_TTY (tty)
-set -gx KUBE_EDITOR "nvim"
 set -gx EDITOR "nvim"
+set -gx GPG_TTY (tty)
+set -gx KUBE_EDITOR $EDITOR
 set -gx GOPATH $HOME/Workspace/go
 set -gx HOMEBREW_BUNDLE_FILE $HOME/.config/brew/Brewfile
 set -gx FZF_DEFAULT_OPTS '

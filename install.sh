@@ -27,9 +27,3 @@ vim +PlugInstall +qall
 
 echo "Installing Neovim plugins ..."
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-git clone git@github.com:powerline/fonts.git ~/fonts
-cd ~/fonts && ./install.sh
-rm -r ~/fonts
-
-source "$HOME/.zshrc"
