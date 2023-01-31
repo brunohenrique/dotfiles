@@ -1,16 +1,16 @@
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [user]
   name       = Bruno Henrique - Garu
   email      = squall.bruno@gmail.com
-	gpgsign    = true
-	signingkey = squall.bruno@gmail.com
+  gpgsign    = true
+  signingkey = squall.bruno@gmail.com
 
 [core]
-	autocrlf     = input
+  autocrlf     = input
   editor       = nvim -f
-	excludesfile = ~/.config/git/.gitignore
+  excludesfile = ~/.config/git/.gitignore
   pager        = delta
 
 [github]
@@ -38,7 +38,7 @@
   colorMoved     = default
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+  diffFilter = delta --color-only --features=interactive
 
 [rerere]
   # Remember my merges
@@ -46,18 +46,18 @@
   enabled = true
 
 [gpg]
-	program = gpg
+  program = gpg
 
 [pull]
-	rebase = false
+  rebase = false
 
 [commit]
-	verbose  = true
-	gpgsign  = true
-	template = ~/.config/git/.gitmessage
+  verbose  = true
+  gpgsign  = true
+  template = ~/.config/git/.gitmessage
 
 [tag]
-	gpgsign  = true
+  gpgsign  = true
 
 [color]
   ui = true
@@ -74,9 +74,9 @@
   new  = green
 
 [color "status"]
-	added     = green
-	changed   = yellow
-	untracked = cyan
+  added     = green
+  changed   = yellow
+  untracked = cyan
 
 [format]
   pretty = format:%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %C(reset)[%C(blue)%an%C(reset)]%C(bold yellow)%d%C(reset)
@@ -125,7 +125,7 @@
   tabs                          = 4
 
 [delta "interactive"]
-    keep-plus-minus-markers = true
+  keep-plus-minus-markers = true
 
 [include]
   path = local.inc
