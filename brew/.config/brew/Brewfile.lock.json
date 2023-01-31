@@ -7034,11 +7034,17 @@
         "options": {
           "full_name": "slack"
         }
+      },
+      "aws-vpn-client": {
+        "version": "3.2.0",
+        "options": {
+          "full_name": "aws-vpn-client"
+        }
       }
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "cff0aec4c0f1dbdd357795bd15a81bb765cd5573"
+        "revision": "e759a655cb287ec8fad47b9c85edd2ef283039a9"
       },
       "ankitpokhrel/jira-cli": {
         "revision": "9fcfa3336da97b08a11797ad5b620eba7743c665"
@@ -7077,22 +7083,22 @@
         "revision": "d0dc705057553d89c7366bec05f5481f30ece9ba"
       },
       "hashicorp/tap": {
-        "revision": "f6cca7f0a3c8263f222ec0ca7bff3ce91079dde0"
+        "revision": "2698e7f27c1266a56ba53787f6a6cbdfee80b00f"
       },
       "hhu-stups/prob": {
         "revision": "a251e2a1d34002f7cf726f19872988a725347fb2"
       },
       "homebrew/bundle": {
-        "revision": "a2796b154bacabb94932a4812014b156c6271dc2"
+        "revision": "6f418bc7b41d9fef9ab85c47ed776ab13738cdfe"
       },
       "homebrew/cask": {
-        "revision": "d7308e0d70a8de88bc149eff457543c0f7a2c721"
+        "revision": "3b5df3214b0887e9661ae1c0f7e5cf3f281eaf48"
       },
       "homebrew/cask-versions": {
-        "revision": "bbcf6e25de38fb06c357d8a152ff1deca862bd25"
+        "revision": "03ac06323b116d178cada1dab7865ff444c29371"
       },
       "homebrew/core": {
-        "revision": "369d38a2dd04607af4199bd3cc87ef5db86fb881"
+        "revision": "928dc4dfcc24ab78e830a50fb260b7db318cff0e"
       },
       "homebrew/services": {
         "revision": "3f97853a2c7bc27eba94076cb08ab93d90bc2211"
@@ -7141,6 +7147,14 @@
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.1",
         "macOS": "12.6"
+      },
+      "ventura": {
+        "HOMEBREW_VERSION": "3.6.20",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "928dc4dfcc24ab78e830a50fb260b7db318cff0e",
+        "CLT": "",
+        "Xcode": "",
+        "macOS": "13.2"
       }
     }
   }
