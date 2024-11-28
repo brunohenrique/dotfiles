@@ -4,6 +4,8 @@
 1. [TEST](#test)
 
 ## Dependencies
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbrunohenrique%2Fdotfiles.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbrunohenrique%2Fdotfiles?ref=badge_shield)
+
 
  - [Alacritty](https://github.com/jwilm/alacritty)
  - [Bat](https://github.com/sharkdp/bat)
@@ -60,3 +62,7 @@ $ ./install.sh
 * `^abc^xyz` - Replace first occurrence of abc with xyz in last command
   and execute it
 * `cd -` - Go to previous directory
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbrunohenrique%2Fdotfiles.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbrunohenrique%2Fdotfiles?ref=badge_large)
