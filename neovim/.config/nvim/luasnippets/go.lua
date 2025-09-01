@@ -12,6 +12,12 @@ local snippets = {
   s({ trig = 'fmts', desc = 'fmt.Sprintf' }, fmt([[
   fmt.Sprintf("{}", {})
   ]], { i(1, "FORMAT"), i(2, "VALUES") })),
+
+  s({ trig = 'test', desc = 'Creates the test boilerplate' }, fmt([[
+  func Test{}() {{
+    {}
+  }}
+  ]], { i(1, "TestName"), i(2, "TEST_BODY") })),
 }
 
 return snippets
