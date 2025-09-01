@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Creates a companion popup session based on your current session.
+# Creates a companion popup window/session based on your current session.
 
 set -eou pipefail
 
@@ -9,6 +9,8 @@ popup_name="${session_name}-popup"
 
 if [[ $session_name == *popup* ]]; then
     tmux detach-client
+elif [[ $session_name == *fullscreen* ]]; then
+  exit 0
 else
     tmux display-popup -E "tmux new-session -A -s ${popup_name} -c '#{pane_current_path}'"
 fi

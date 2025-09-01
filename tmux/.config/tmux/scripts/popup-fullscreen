@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Toggles the companion popup window/session into fullscreen or centered mode.
+
+set -eou pipefail
+
+session_name="$(tmux display-message -p -F "#{session_name}")"
+toggle=""
+if [[ $session_name == *fullscreen* ]]; then
+  toggle=${session_name/fullscreen/popup}
+else
+  toggle=${session_name/popup/fullscreen}
+fi
+
+if [[ $session_name == *fullscreen* ]]; then
+  tmux rename-session -t "$session_name" "$toggle"
+  tmux detach-client
+  tmux display-popup -h 50% -w 50% -E "tmux new-session -A -s $toggle -c '#{pane_current_path}'"
+else
+  tmux rename-session -t "$session_name" "$toggle"
+  tmux detach-client
+  tmux display-popup -h 100% -w 100% -E "tmux new-session -A -s $toggle -c '#{pane_current_path}'"
+fi
