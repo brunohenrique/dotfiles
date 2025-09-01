@@ -1,0 +1,9 @@
+theme = nord
+font-family = JetBrainsMono NFM Bold
+font-size = 20
+macos-titlebar-style = hidden
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+
+keybind = super+r=reload_config
