@@ -12,7 +12,7 @@ export FZF_DEFAULT_OPTS='
      --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
      --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
      --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
-PROJECTS_DIRS="$(cat ~/.config/tmux/projects_dirs)"
+PROJECTS_DIRS="$(gopass show projects_dirs)"
 
 project_folder=$(fd . --type d $PROJECTS_DIRS --max-depth 1 | fzf)
 session_name=$(echo "$project_folder" | awk -F "/" '{print $(NF-1)}')
