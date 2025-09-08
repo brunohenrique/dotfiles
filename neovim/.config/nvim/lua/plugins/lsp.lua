@@ -159,6 +159,7 @@ return {
                   checkThirdParty = false,
                   library = {
                     vim.env.VIMRUNTIME,
+                    "/Users/brunocosta/.hammerspoon/Spoons/EmmyLua.spoon/annotations",
                     -- Depending on the usage, you might want to add additional paths here.
                     -- "${3rd}/luv/library"
                     -- "${3rd}/busted/library",
@@ -174,7 +175,7 @@ return {
                 hint = {
                   enable = true,
                 },
-                diagnostics = { globals = { "vim" } },
+                diagnostics = { globals = { "vim", "hs" } },
               },
             },
           },
