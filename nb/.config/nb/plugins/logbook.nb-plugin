@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# vim: filetype=bash
+###############################################################################
+# logbook.nb-plugin
+#
+# Install with:
+#   nb plugin install https://github.com/xwmx/nb/blob/master/plugins/example.nb-plugin
+#
+# https://github.com/xwmx/nb
+###############################################################################
+
+# Add the new subcommand name with `_subcommands add <name>`.
+_subcommands add "logbook"
+
+# Define help and usage text with `_subcommands describe <subcommand> <usage>`.
+_subcommands describe "example" <<HEREDOC
+Usage:
+  nb logbook
+
+Description:
+ TBD
+HEREDOC
+
+# Define the subcommand as a function, named with a leading underscore.
+_logbook() {
+  file_name="$(date '+%Y-%m-%d')".md
+  notebook_path="$(_notebooks current --path)"
+  touch "$notebook_path/logbook/$file_name"
+  _open theabsurd:logbook/"$file_name"
+}
