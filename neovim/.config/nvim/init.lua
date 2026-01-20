@@ -109,14 +109,18 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_lines = {
+   -- Only show virtual line diagnostics for the current cursor line
+   current_line = true,
+  },
+
   -- virtual_text = {
-  --   prefix = "●", -- Could be '■', '▎', 'x'
+    -- prefix = "●", -- Could be '■', '▎', 'x'
+    -- source = "if_many",
+  -- },
+  -- float = {
   --   source = "if_many",
   -- },
-  float = {
-    source = "if_many",
-  },
   signs = true,
   underline = true,
   update_in_insert = false,

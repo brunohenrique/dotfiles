@@ -116,15 +116,16 @@ return {
     config = function()
       local util = require("lspconfig.util")
       local servers = {
-        { name = "clangd",      opts = { on_attach = on_attach } },
-        { name = "dotls",       opts = { on_attach = on_attach } },
-        { name = "efm",         opts = { on_attach = on_attach } },
-        { name = "taplo",       opts = { on_attach = on_attach } },
+        { name = "clangd", opts = { on_attach = on_attach } },
+        { name = "dotls", opts = { on_attach = on_attach } },
+        { name = "vale_ls", opts = { on_attach = on_attach } },
+        { name = "efm", opts = { on_attach = on_attach } },
+        { name = "taplo", opts = { on_attach = on_attach } },
         { name = "terraformls", opts = { on_attach = on_attach } },
-        { name = "texlab",      opts = { on_attach = on_attach } },
-        { name = "tflint",      opts = { on_attach = on_attach } },
-        { name = "zls",         opts = { on_attach = on_attach } },
-        { name = "marksman",    opts = { on_attach = on_attach } },
+        { name = "texlab", opts = { on_attach = on_attach } },
+        { name = "tflint", opts = { on_attach = on_attach } },
+        { name = "zls", opts = { on_attach = on_attach } },
+        { name = "marksman", opts = { on_attach = on_attach } },
         {
           name = "tinymist",
           opts = {
@@ -175,7 +176,7 @@ return {
                 hint = {
                   enable = true,
                 },
-                diagnostics = { globals = { "vim", "hs" } },
+                diagnostics = { globals = { "vim", "hs", "Snacks" } },
               },
             },
           },
@@ -218,16 +219,29 @@ return {
           name = "pylsp",
           opts = {
             on_attach = on_attach,
-            pylsp = {
-              plugins = {
-                pycodestyle = {
-                  maxLineLength = 100,
-                },
-                rope_completion = {
-                  enabled = true,
-                },
-                jedi_completion = {
-                  enabled = true,
+            settings = {
+              pylsp = {
+                plugins = {
+                  -- formatter options
+                  black = { enabled = true },
+                  autopep8 = { enabled = false },
+                  yapf = { enabled = false },
+                  -- linter options
+                  pylint = { enabled = true, executable = "pylint" },
+                  ruff = { enabled = false },
+                  pyflakes = { enabled = false },
+                  pycodestyle = { enabled = true, maxLineLength = 100 },
+                  -- type checker
+                  pylsp_mypy = {
+                    enabled = true,
+                    overrides = { "--python-executable", vim.g.python3_host_prog, true },
+                    report_progress = true,
+                    live_mode = false,
+                  },
+                  -- auto-completion options
+                  jedi_completion = { fuzzy = true },
+                  -- import sorting
+                  isort = { enabled = true },
                 },
               },
             },
@@ -287,9 +301,7 @@ return {
         },
       }
       require("mason").setup()
-
-      local lspconfig = require("lspconfig")
-      lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+      vim.lsp.config("*", {
         inlay_hints = {
           enabled = true,
         },
@@ -309,16 +321,16 @@ return {
         },
       })
 
+      local server_names = lsp_names(servers)
       require("mason-lspconfig").setup({
-        ensure_installed = lsp_names(servers),
+        automatic_enable = false,
+        ensure_installed = server_names
       })
-      -- After setting up mason-lspconfig you may set up servers via lspconfig
-      -- require("lspconfig").lua_ls.setup {}
-      -- require("lspconfig").rust_analyzer.setup {}
-      -- ...
-      for i, server in ipairs(servers) do
-        require("lspconfig")[server.name].setup(server.opts)
+
+      for _, server in ipairs(servers) do
+        vim.lsp.config(server.name, server.opts)
       end
+      vim.lsp.enable(server_names)
     end,
   },
 }

@@ -1,6 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
+  enabled = false,
   opts = {
     defaults = {
       sorting_strategy = 'ascending',

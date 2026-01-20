@@ -1,7 +1,10 @@
 return {
   "SergioRibera/codeshot.nvim",
   keys = {
-    { "<Leader>s", ":SSSelected",{mode = "v", remap = false} },
-    { "<Leader>s", ":SSFocused", {mode = "v", remap = false} },
+    { "<Leader>css", ":SSSelected<CR>", { mode = "v", remap = false }, desc = "CodeShot Selected" },
+    { "<Leader>csf", ":SSFocused<CR>", { mode = "v", remap = false }, desc = "CodeShot Focused" },
   },
+  config = function()
+    require("codeshot").setup({})
+  end,
 }

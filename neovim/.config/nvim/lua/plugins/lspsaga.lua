@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "nvimdev/lspsaga.nvim",
   event = "LspAttach",
   keys = {
